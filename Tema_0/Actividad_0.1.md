@@ -50,11 +50,11 @@ Aquí un flujo típico de lo que sucede cuando un navegador recupera una página
 	
 Listado de códigos: 
 
-1xx	-> Informativos – la petición se recibió, pero el servidor sigue procesando
-2xx	-> Éxito – la petición fue atendida correctamente
-3xx	-> Redirecciones – el cliente debe hacer algo adicional para completar la petición (seguir locaciones, etc.)
-4xx	-> Errores del cliente – la petición fue mala o no tiene permisos, etc.
-5xx	-> Errores del servidor – la petición estaba bien formada, pero el servidor falló al procesarla
+    • 1xx	-> Informativos – la petición se recibió, pero el servidor sigue procesando
+    • 2xx	-> Éxito – la petición fue atendida correctamente
+    • 3xx	-> Redirecciones – el cliente debe hacer algo adicional para completar la petición (seguir locaciones, etc.)
+    • 4xx	-> Errores del cliente – la petición fue mala o no tiene permisos, etc.
+    • 5xx	-> Errores del servidor – la petición estaba bien formada, pero el servidor falló al procesarla
 
 
 ## Content type. Tipos principales
