@@ -18,10 +18,10 @@ Permite hacer peticiones HTTP (GET, POST, PUT, DELETE…), subir archivos, auten
 
   2.- curl -I https://www.ejemplo.com/	-> Obtiene solo las cabeceras HTTP (usando el método HEAD). No descarga el cuerpo de la página. 
 
-  3.- curl -o archivo.html https://www.ejemplo.com/pagina.html	Descarga la página y la guarda localmente con el nombre archivo.html. 
+  3.- curl -o archivo.html https://www.ejemplo.com/pagina.html	-> Descarga la página y la guarda localmente con el nombre archivo.html. 
 
-  4.- curl -O https://www.ejemplo.com/imagen.jpg	Descarga la imagen y la guarda con el nombre original (imagen.jpg). La opción -O toma el nombre del recurso remoto. 
+  4.- curl -O https://www.ejemplo.com/imagen.jpg	-> Descarga la imagen y la guarda con el nombre original (imagen.jpg). La opción -O toma el nombre del recurso remoto. 
 
-  5.-	curl -X POST -d "usuario=juan&clave=secreto" https://api.ejemplo.com/login	Envía datos (formato application/x-www-form-urlencoded) mediante POST a una API o formulario web. 
+  5.-	curl -X POST -d "usuario=juan&clave=secreto" https://api.ejemplo.com/login	-> Envía datos (formato application/x-www-form-urlencoded) mediante POST a una API o formulario web. 
 
-  6.-	curl -L https://www.ejemplo.com	Sigue redirecciones HTTP (por ejemplo, si el servidor responde con código 301/302). La opción -L hace que curl siga los redireccionamientos automáticamente. 
+  6.-	curl -L https://www.ejemplo.com	-> Sigue redirecciones HTTP (por ejemplo, si el servidor responde con código 301/302). La opción -L hace que curl siga los redireccionamientos automáticamente. 
