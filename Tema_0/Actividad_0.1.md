@@ -59,8 +59,8 @@ Listado de códigos:
 
 ## Content type. Tipos principales
 
-El Content‑Type es un encabezado 
-de la respuesta HTTP que indica qué tipo de contenido se está enviando (tipo mime). Algunos de los más comunes:
+El Content‑Type es un encabezado de la respuesta HTTP que indica qué tipo de contenido se está enviando (tipo mime). Algunos de los más comunes:
+
     • text/html → páginas HTML
     • text/plain → texto plano
     • text/css → hojas de estilo CSS
