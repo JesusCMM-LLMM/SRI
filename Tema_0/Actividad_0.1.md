@@ -11,6 +11,7 @@ La pila de protocolos de HTTP, permite la comunicación en red. Digamos que es e
 ## ¿Componentes de una URL?
 	
 Las partes más esenciales de una URL (Uniform Resource Locator) son:
+
     1. Protocolo / esquema: por ejemplo http, https (el mecanismo de transferencia)
     2. Host / dominio: por ejemplo www.ejemplo.com
     3. Puerto (opcional, si no es el estándar): por ejemplo :80, :443
@@ -21,6 +22,7 @@ Las partes más esenciales de una URL (Uniform Resource Locator) son:
 ## ¿Pasos en la recuperación de una página web mediante HTTP?
 	
 Aquí un flujo típico de lo que sucede cuando un navegador recupera una página:
+
     1. Usuario o navegador introduce una URL / hace clic en enlace.
     2. Se resuelve el nombre de dominio (DNS lookup): el navegador pregunta qué dirección IP corresponde al dominio.
     3. Se establece una conexión TCP al servidor web (en el puerto apropiado, por ejemplo 80 para HTTP o 443 para HTTPS).
