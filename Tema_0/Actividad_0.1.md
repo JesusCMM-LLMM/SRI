@@ -48,6 +48,7 @@ Aquí un flujo típico de lo que sucede cuando un navegador recupera una página
 
 ## Response. Códigos
 	
+Listado de códigos: 
 
 1xx	-> Informativos – la petición se recibió, pero el servidor sigue procesando
 2xx	-> Éxito – la petición fue atendida correctamente
