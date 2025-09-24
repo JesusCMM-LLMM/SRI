@@ -5,7 +5,7 @@ Actividades del módulo de servicios de red e internet
 
 | Ejercicio        | Descripción                |
 | -------------    | -------------              |
-| [Act Inicio SRI](/Tema_0/Actividad_0.md)      | Actividad de inicio        |
+| [Act Inicio SRI - Apartado 0.1](/Tema_0/Actividad_0.1.md)      | Actividad de inicio de HTTP       |
 
 ## Tema 1 - SERVIDORES WEB
 
