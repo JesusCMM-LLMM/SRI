@@ -56,7 +56,7 @@ Y comprobamos que funciona:
 
 <img width="371" height="210" alt="image" src="https://github.com/user-attachments/assets/67d24f22-22c2-4383-ad16-6bee4e1a814b" />
 
-*He quitado el acento del <h1>
+*He quitado el acento del '<h1>'
 
 Ahora vamos a probar que nuestra nueva página web pueda procesar peticiones PHP. Para ello creamos un nuevo archivo llamado info.php dentro de la carpeta dom_propio con este código:
 
