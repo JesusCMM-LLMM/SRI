@@ -15,4 +15,5 @@ Actividades del módulo de servicios de red e internet
 | Ejercicio        | Descripción                |
 | -------------    | -------------              |
 | [Act 1](Tema_1/Actividad_1.md)      | Instalación de Apache en Ubuntu       |
+| [Act 2](Tema_1/Actividad_2.md)      | Ejercicios archivos de configuración de Apache       |
 
