@@ -22,9 +22,16 @@ y aquí comprobamos que ya está funcionando (aunque está vacío)
 
 ### Ejemplo 2
 
-
+Para probar este ejemplo, simplemente nos bajamos el código del repositorio a nuestra MV y lo ejecutamos. 
 
 ### Ejemplo 3
 
+Usando el código de la página, se ejecuta y obtenemos esto:
+
+<img width="440" height="74" alt="image" src="https://github.com/user-attachments/assets/0beb61d2-f9d6-4630-8f78-60d557e486de" />
+
+Ahora comprobamos que esté funcionando (aunque de nuevo, esté vacío):
+
+<img width="532" height="277" alt="image" src="https://github.com/user-attachments/assets/8dc2423e-450a-4c61-b61a-a93c6cf372c4" />
 
 
