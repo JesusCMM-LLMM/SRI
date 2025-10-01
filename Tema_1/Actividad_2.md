@@ -13,6 +13,13 @@ Y comprobamos que también esté escuchando ese puerto:
 
 ## Añadir el dominio “marisma.intranet” en el fichero “hosts”
 
+Nos vamos a /etc/hosts y añadimos esta línea:
+
+<img width="1217" height="114" alt="image" src="https://github.com/user-attachments/assets/35c2744c-1751-4a85-bbbe-1041fa49d6dd" />
+
+Con esto podemos acceder a localhost con 'marisma.intranet'
+
+<img width="579" height="203" alt="image" src="https://github.com/user-attachments/assets/1675123f-ec25-4744-a846-df90ba0ebdcb" />
 
 
 ## Cambia la directiva “ServerTokens” para mostrar el nombre del producto.
