@@ -2,6 +2,9 @@
 
 ## Apache utilizará el puerto 81 además del 80
 
+<img width="814" height="182" alt="image" src="https://github.com/user-attachments/assets/834e453f-a8c4-4a6a-a722-3858fd2921c3" />
+
+<img width="981" height="274" alt="image" src="https://github.com/user-attachments/assets/eac1203e-4d81-4dd2-8dcd-1560f3896cf0" />
 
 
 ## Añadir el dominio “marisma.intranet” en el fichero “hosts”
@@ -10,7 +13,9 @@
 
 ## Cambia la directiva “ServerTokens” para mostrar el nombre del producto.
 
+<img width="813" height="295" alt="image" src="https://github.com/user-attachments/assets/a31d904b-c535-4d3d-8377-ff15d3da54bf" />
 
+<img width="623" height="241" alt="image" src="https://github.com/user-attachments/assets/1b34c232-36da-419a-878f-6c7aa2b2f49f" />
 
 ## Comprueba si se visualiza el pie de página en las páginas generadas por Apache (por ejemplo, en las páginas de error). Cambia el valor de la directiva y comprueba que funciona correctamente.
 
