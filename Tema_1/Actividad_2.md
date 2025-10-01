@@ -45,7 +45,7 @@ Y tras modificar la directiva, ya no se muestra el pie de página de antes.
 
 ## Crea un directorio “prueba” y otro directorio “prueba2”. Incluye un par de páginas en cada una de ellas.
 
-
+<img width="683" height="395" alt="image" src="https://github.com/user-attachments/assets/eef28b2c-f261-41b8-88b1-a00753da2942" />
 
 ## Redirecciona el contenido de la carpeta “prueba” hacia “prueba2”
 
