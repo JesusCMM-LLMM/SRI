@@ -51,6 +51,9 @@ Y tras modificar la directiva, ya no se muestra el pie de página de antes.
 
 
 
+
+
+
 ## Es posible redireccionar tan solo una página en lugar de toda la carpeta. Pruébalo.
 
 
