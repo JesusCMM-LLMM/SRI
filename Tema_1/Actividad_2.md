@@ -32,7 +32,7 @@ Y así logramos que solo nos muestre el nombre del producto y no la versión ni 
 
 <img width="623" height="241" alt="image" src="https://github.com/user-attachments/assets/1b34c232-36da-419a-878f-6c7aa2b2f49f" />
 
-## Comprueba si se visualiza el pie de página en las páginas generadas por Apache (por ejemplo, en las páginas de error). Cambia el valor de la directiva y comprueba que funciona correctamente.
+## Comprueba si se visualiza el pie de página en las páginas generadas por Apache (por ejemplo, en las páginas de error). Cambia el valor de la directiva "ServerSignature" y comprueba que funciona correctamente.
 
 Introducimos una dirección incorrecta y no da el error 404 con el pie de página completo
 
