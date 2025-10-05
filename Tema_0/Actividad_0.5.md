@@ -24,6 +24,10 @@ y aquí comprobamos que ya está funcionando (aunque está vacío)
 
 Para probar este ejemplo, simplemente nos bajamos el código del repositorio a nuestra MV y lo ejecutamos. 
 
+<img width="622" height="82" alt="image" src="https://github.com/user-attachments/assets/9ee86f6a-bbad-4d68-94a0-efc263b7eca0" />
+
+El código originalmente nos daba un error en la línea 1007, solo teníamos que borrar 'color=True' y ya funciona. 
+
 ### Ejemplo 3
 
 Usando el código de la página, se ejecuta y obtenemos esto:
