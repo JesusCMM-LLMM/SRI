@@ -46,7 +46,12 @@ Y tras modificar la directiva, ya no se muestra el pie de página de antes.
 ## Crea un directorio “prueba” y otro directorio “prueba2”. Incluye un par de páginas en cada una de ellas.
 
 <img width="540" height="131" alt="image" src="https://github.com/user-attachments/assets/1f572c7a-be70-47b0-985e-e5e699fe4642" />
-Ambas carpetas creadas con un index.html de prueba en cada una. 
+
+Ambas carpetas creadas con un index.html de prueba en cada una, vamos a comprobar que funcionan:
+
+<img width="1180" height="486" alt="image" src="https://github.com/user-attachments/assets/93ecbfcf-5c8f-4c16-9dac-79506bef8704" />
+
+<img width="1194" height="467" alt="image" src="https://github.com/user-attachments/assets/ce31e0e2-9a50-45f4-a3ad-4f01cc0373f3" />
 
 ## Redirecciona el contenido de la carpeta “prueba” hacia “prueba2”
 
