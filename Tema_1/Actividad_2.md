@@ -55,13 +55,20 @@ Ambas carpetas creadas con un index.html de prueba en cada una, vamos a comproba
 
 ## Redirecciona el contenido de la carpeta “prueba” hacia “prueba2”
 
+Dentro de /etc/apache2/ vamos al archivo apache2.conf y añadimos la línea siguiente:
 
+<img width="317" height="73" alt="image" src="https://github.com/user-attachments/assets/323993e2-8e85-4f5e-915b-7b16ab0bbd6e" />
 
-
+Y funciona correctamente.
 
 
 ## Es posible redireccionar tan solo una página en lugar de toda la carpeta. Pruébalo.
 
+Sí, es posible. De hecho si en prueba2 ponemos otro archivo html y le indicamos que la redireccion sea de /prueba a /prueba2/test.html, lo podemos comprobar. Esta es la línea del código:
+
+<img width="411" height="74" alt="image" src="https://github.com/user-attachments/assets/6b32819b-b473-40f0-8de2-27b3d27ebcfc" />
+
+<img width="984" height="383" alt="image" src="https://github.com/user-attachments/assets/53ecd13c-1219-4628-a39c-244b2e27a66c" />
 
 
 ## Usa la directiva userdir
