@@ -20,5 +20,4 @@ echo "</html>" >> /var/www/html/$archivo.html
 
 echo "Archivo creado correctamente en /var/www/html/$archivo.html"
 
-echo "Archivo creado correctamente en /var/www/html/$archivo.html"
 
