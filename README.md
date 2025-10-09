@@ -16,4 +16,7 @@ Actividades del módulo de servicios de red e internet
 | -------------    | -------------              |
 | [Act 1](Tema_1/Actividad_1.md)      | Instalación de Apache en Ubuntu       |
 | [Act 2](Tema_1/Actividad_2.md)      | Ejercicios archivos de configuración de Apache       |
+| [Script 1](Tema_1/Scripts_Act2/Actividad_2-Script1.sh)      | Primer Script       |
+| [Script 2](Tema_1/Scripts_Act2/Actividad_2-Script2.sh)      | Segundo Script       |
+| [Script 3](Tema_1/Scripts_Act2/Actividad_2-Script3.sh)      | Tercer Script       |
 
