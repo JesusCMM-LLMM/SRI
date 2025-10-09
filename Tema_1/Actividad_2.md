@@ -73,7 +73,19 @@ Sí, es posible. De hecho si en prueba2 ponemos otro archivo html y le indicamos
 
 ## Usa la directiva userdir
 
+Primero habilitamos el módulo userdir:
 
+<img width="572" height="147" alt="image" src="https://github.com/user-attachments/assets/fe7a0d4f-1f29-4010-b142-023f9520152a" />
+
+Creamos la carpeta 'public_html' dentro de nuestra carpeta personal y le creamos dentro un index.html para que se nos muestre:
+
+<img width="451" height="82" alt="image" src="https://github.com/user-attachments/assets/3934aeff-51ae-4eab-a8f2-9e049d92e845" />
+
+Hemos comprobado que tanto la carpeta personal (jcmm) como los archivos tengan los permisos adecuados.
+
+Comprobamos que funciona correctamente:
+
+<img width="493" height="157" alt="image" src="https://github.com/user-attachments/assets/2ef30ffd-ae32-41f7-9ade-57577a33aa45" />
 
 ## Usa la directiva alias para redireccionar a una carpeta dentro del directorio de usuario.
 
