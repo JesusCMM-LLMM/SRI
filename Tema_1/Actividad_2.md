@@ -77,13 +77,13 @@ Sí, es posible. De hecho si en prueba2 ponemos otro archivo html y le indicamos
 
 ## Usa la directiva alias para redireccionar a una carpeta dentro del directorio de usuario.
 
-Vamos al archivo alias.conf dentro de mods-available
+Vamos al archivo alias.conf dentro de mods-available y añadimos el alias
 
-<img width="530" height="173" alt="image" src="https://github.com/user-attachments/assets/29f0f68a-9ce2-4704-a5f8-ca33ef0c5217" />
+<img width="446" height="188" alt="image" src="https://github.com/user-attachments/assets/308880b1-d521-4fa7-ac67-addbe89e1a51" />
 
 y vemos que funciona
 
-<img width="1166" height="489" alt="image" src="https://github.com/user-attachments/assets/0ecd8567-a2d6-48e8-a027-13ea96fd1822" />
+<img width="524" height="145" alt="image" src="https://github.com/user-attachments/assets/5de225c5-08c6-4c77-bba4-09f19f657e0c" />
 
 
 ## ¿Para qué sirve la directiva Options y dónde aparece? Comprueba si apache indexa los directorios. Si es así, ¿cómo lo desactivamos?
