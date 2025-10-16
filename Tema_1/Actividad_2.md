@@ -101,7 +101,7 @@ y vemos que funciona
 ## ¿Para qué sirve la directiva Options y dónde aparece? Comprueba si apache indexa los directorios. Si es así, ¿cómo lo desactivamos?
 
 La directiva options sirve para configurar el comportamiento dentro de un directorio. Sí indexa el contenido. 
-Lo desativamos en apache2.conf y vemos que en var/www quitando la línea 'Indexes'
+Lo desactivamos en apache2.conf y vemos que en var/www quitando la línea 'Indexes' ya no aparecen los indexes
 
 <img width="583" height="331" alt="image" src="https://github.com/user-attachments/assets/7fa927e1-cd8d-4bf5-ad61-0a4830d974c6" />
 
