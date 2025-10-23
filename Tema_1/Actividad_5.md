@@ -50,6 +50,7 @@ Vamos a trabajar dentro de etc/apache2/apache2.conf:
 ## 4. Modifica la configuración de forma que el acceso a dir1 se permita a "marisma.intranet" y no se permita desde 10.3.0.101"
 
 Aquí usamos "RequireAll" para que se cumplan ambas condiciones. 
+
 <img width="485" height="149" alt="image" src="https://github.com/user-attachments/assets/fca04242-f8de-4ad2-95c4-17c2b980b03e" />
 
 ## 5. Modifica la configuración de forma que el acceso a dir2 se permita a "10.3.0.100/8" y no a "marisma.intranet"
