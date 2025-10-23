@@ -19,4 +19,5 @@ Actividades del módulo de servicios de red e internet
 | [Script 1](Tema_1/Scripts_Act2/Actividad_2-Script1.sh)      | Primer Script       |
 | [Script 2](Tema_1/Scripts_Act2/Actividad_2-Script2.sh)      | Segundo Script       |
 | [Script 3](Tema_1/Scripts_Act2/Actividad_2-Script3.sh)      | Tercer Script       |
-
+| [Act 5](Tema_1/Actividad_5.md)      | Directiva Require      |
+| [Act 6](Tema_1/Actividad_6.md)      | RegEx      |
