@@ -12,9 +12,11 @@ RedirectMatch "(.*)\.gif$" "$1.jpg"
 
 # Números enteros y decimales
 
+^[0-9]*\.*[0-9]*$
 
 # Números de teléfono en el formato Americano: 123-123-1234
 
+^[0-9]{3}-[0-9]{3}-[0-9]{4}$
 
 # Palabras
 
