@@ -22,6 +22,3 @@
 ## Ejemplo 5: Uso del RewriteCondPermalink
 
 
-
-Ejemplo 6: URL amigables con WordPressPermalink
-Ejercicio: Instala wordpress en tu servidor con el módulo rewrite desactivado, comprueba que las URL no son amigables. Activa el módulo y a continuación configura el blog para que tenga URL amigables (Settings->Permalink)
