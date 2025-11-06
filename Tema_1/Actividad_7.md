@@ -15,6 +15,8 @@
 
 ## Ejemplo 4: Acortar URLPermalink
 
+<img width="887" height="191" alt="image" src="https://github.com/user-attachments/assets/54aeb15f-d3a3-42bf-9149-aa99bfa8edce" />
+
 
 
 ## Ejemplo 5: Uso del RewriteCondPermalink
