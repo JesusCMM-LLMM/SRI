@@ -21,4 +21,5 @@
 
 ## Ejemplo 5: Uso del RewriteCondPermalink
 
+<img width="929" height="165" alt="image" src="https://github.com/user-attachments/assets/66784c29-7771-4430-8c28-f580b1b00a47" />
 
