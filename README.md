@@ -22,3 +22,5 @@ Actividades del módulo de servicios de red e internet
 | [Act 5](Tema_1/Actividad_5.md)      | Directiva Require      |
 | [Act 6](Tema_1/Actividad_6.md)      | RegEx      |
 | [Act 7](Tema_1/Actividad_7.md)      | Redirecciones      |
+| [Act 8](Tema_1/Actividad_8.md)      | VirtualHost       |
+| [Act 9](Tema_1/Actividad_9.md)      | Autenticación     |
