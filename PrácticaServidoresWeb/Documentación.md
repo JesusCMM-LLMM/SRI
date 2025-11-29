@@ -2,7 +2,11 @@
 
 ## 0. Preparación. 
 
-Partiendo desde una instalación limpia de Ubuntu 25.01, lo primero que vamos a hacer es actualizar todos los paquetes: 
+Partiendo desde una instalación limpia de Ubuntu 25.01, lo primero que vamos a hacer es actualizar todos los paquetes:
+Usamos
+~~~
+sudo apt update && sudo apt upgrade -y
+~~~
 
 <img width="662" height="476" alt="image" src="https://github.com/user-attachments/assets/594e42e9-02c3-4627-87fe-6a4f71b5efcf" />
 
@@ -10,7 +14,12 @@ Esperamos a que se complete y vamos a por el primer punto.
 
 ## 1.- Dominios mediante el archivo hosts.
 
-Según el enunciado, necesitamos simular dos dominios primero (centro.intranet y departamentos.centro.intranet) y un tercero para la parte final de la práctica con nginx ( servidor2.centro.intranet). Para esto nos vamos al archico hosts y lo editamos: 
+Según el enunciado, necesitamos simular dos dominios primero (centro.intranet y departamentos.centro.intranet) y un tercero para la parte final de la práctica con nginx ( servidor2.centro.intranet). Para esto nos vamos al archico hosts y lo editamos
+con: 
+
+~~~
+sudo nano /etc/hosts
+~~~
 
 <img width="571" height="175" alt="image" src="https://github.com/user-attachments/assets/67b04454-1de6-43c9-9310-bae92cf1891c" />
 
@@ -24,11 +33,26 @@ Para comprobar que esto se ha ejecutado correctamente, vamos a hacer ping a esos
 
 ## 2.- Instalación de la pila LAMP
 
-Vamos a instalar Apache, MySQL y PHP todo a la misma vez mediante el repositorio apt:
+Vamos a instalar Apache, MySQL y PHP todo a la misma vez mediante el repositorio apt, usando:
+~~~
+sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql php-gd php-xml php-mbstring -y
+~~~
+Esto básicamente instala apache, php, mysql y sus dependencias
 
 <img width="1148" height="302" alt="image" src="https://github.com/user-attachments/assets/2095d1e2-5137-4966-ab1c-6e59e9ea3c8e" />
 
-Una vez se ha instalado, vamos a activar el servicio de apache:
+Una vez se ha instalado, vamos a activar el servicio de apache con:
+
+~~~
+sudo systemctl enable apache2
+sudo systemctl start apache2
+~~~
+
+Y comprobamos su estado con 
+
+~~~
+sudo systemctl status apache2
+~~~
 
 <img width="859" height="478" alt="image" src="https://github.com/user-attachments/assets/4d346f6f-7b17-403b-b5bb-b39bc02199d1" />
 
@@ -36,7 +60,7 @@ Con esto ya quedaría instalada la pila LAMP, más adelante configuraremos los e
 
 ## 3.- Instalación y Configuración de WordPress
 
-El dominio centro.intranet será el que servirá el wordpress. Lo primero que vamos a hacer es crear la base de datos, sin ella el wordpress no funciona:
+El dominio centro.intranet será el que servirá el wordpress. Lo primero que vamos a hacer es crear la base de datos, sin ella el wordpress no funciona. Como ya tenemos MySQL instalado, vamos a usando sentencias SQL para crear la base de datos, el usuario y su contraseña y también darle privilegios para poder conectarnos:
 
 <img width="771" height="362" alt="image" src="https://github.com/user-attachments/assets/5372f1eb-3ad5-4b78-b2b4-d986d7c67929" />
 
@@ -52,17 +76,24 @@ Según he visto, es la base de datos más sencilla para que Wordpress funcione.
 
 <img width="587" height="257" alt="image" src="https://github.com/user-attachments/assets/d9b872d1-0556-481e-bb0f-6a5a20fbb163" />
 
-Después de esto, vamos a descargar Wordpress:
+Después de esto, vamos a descargar Wordpress con wget y su enlace:
+
+~~~
+wget https://wordpress.org/latest.tar.gz
+~~~
 
 <img width="705" height="234" alt="image" src="https://github.com/user-attachments/assets/590d5da5-1cf6-461c-bec6-4ef9755b1375" />
 
-Lo descomprimimos, movemos y le cambiamos los permisos:
+Lo descomprimimos, movemos y le cambiamos los permisos, usando los comandos de las capturas:
 
 <img width="420" height="63" alt="image" src="https://github.com/user-attachments/assets/dc836d4b-7dee-450a-a1bf-d4ac51ad5a76" />
 
 <img width="601" height="87" alt="image" src="https://github.com/user-attachments/assets/66f27f23-3c67-44e2-b6b9-a89acd31b9bf" />
 
 Por último, vamos a configurar el VirtualHost, creando el archivo de configuración para el sitio:
+~~~
+sudo nano /etc/apache2/sites-available/centro.conf
+~~~
 
 <img width="609" height="31" alt="image" src="https://github.com/user-attachments/assets/86ff82ab-5b87-4f84-adaf-67227861c167" />
 
@@ -95,6 +126,9 @@ Y con esto ya quedaría instalado.
 ## 4.- Aplicación Python con WSGI 
 
 El dominio departamentos.centro.intranet es el que servirá la aplicación de python. Primero de todo necesitamos instalar el módulo WSGI: 
+~~~
+sudo apt install libapache2-mod-wsgi-py3
+~~~
 
 <img width="565" height="51" alt="image" src="https://github.com/user-attachments/assets/bb09a4b5-6d01-420b-a7fb-4f0b8e5f3f3e" />
 
@@ -103,9 +137,15 @@ Una vez instalado, vamos a crear la carpeta donde estará el script, así como e
 <img width="519" height="51" alt="image" src="https://github.com/user-attachments/assets/1cbec2ae-e7b7-42b8-a040-4f2ddcb755ad" />
 
 En cuanto al script, voy a usar uno de mi repositorio de github, así que copiaré el código directamente. 
-Vamos a configurar el VirtualHost para Python: 
+
+Vamos a configurar el VirtualHost para Python de la siguiente manera: 
+~~~
+sudo nano /etc/apache2/sites-available/departamentos.conf
+~~~
 
 <img width="652" height="32" alt="image" src="https://github.com/user-attachments/assets/34465c9b-0977-4a92-a8c9-f1f5d18feb9c" />
+
+Dentro de virtualhost le estamos diciendo el nombre de dominio así como donde está su raíz, le decimos al módulo WSGI dónde se encuentra el script y de momento, usamos un require all granted:
 
 <img width="946" height="286" alt="image" src="https://github.com/user-attachments/assets/0799608c-7c3f-4fa4-89f8-4001d018b4f6" />
 
@@ -119,11 +159,15 @@ Para demostrar que funciona vamos a hacer lo mismo que para demostrar el wordpre
 
 ## 5.- Proteger Python con Autenticación
 
-Lo primero que hacemos es crear el archivo de contraseñas:
+Lo primero que hacemos es crear el usuario y el archivo de contraseñas, usando:
+~~~
+sudo htpasswd -c /etc/apache2/.htpasswd UsuJesus
+~~~
+Nos pide la contraseña para este usuario que hemos creado (UsuJesus):
 
 <img width="598" height="102" alt="image" src="https://github.com/user-attachments/assets/b4812ef7-b7ae-4c6c-bd56-decddcb8c215" />
 
-Y ahora vamos a modificar el archivo de configuración del VirtualHost, dentro de directory vamos a añadir el método de autenticación:
+Y ahora vamos a modificar el archivo de configuración del VirtualHost, dentro de directory vamos a añadir el método de autenticación y el require se cambiará por valid-user:
 
 <img width="491" height="340" alt="image" src="https://github.com/user-attachments/assets/eaa4f640-a923-4161-9830-8c56ac743968" />
 
@@ -137,7 +181,11 @@ Ingresamos el nombre y usuario y ya podemos acceder:
 
 ## 6.- Instalar y Configurar AWStats
 
-Vamos a instalar awstats, que es una herramienta de estadisticas:
+Vamos a instalar awstats, que es una herramienta de estadisticas, mediante el repositorio apt:
+
+~~~
+sudo apt install awstats -y
+~~~
 
 <img width="534" height="207" alt="image" src="https://github.com/user-attachments/assets/26d3744d-fc84-4dab-bfaa-192696026656" />
 
@@ -145,17 +193,21 @@ Vamos a configurarla para centro.intranet, copiando la configuración base:
 
 <img width="804" height="49" alt="image" src="https://github.com/user-attachments/assets/a2198a7a-b9b0-4fb2-a323-0beb77c79d21" />
 
-Y modificamos estas líneas:
+Y modificamos estas líneas, para que correspondan con nuestro nombre de dominio:
 
 <img width="383" height="49" alt="image" src="https://github.com/user-attachments/assets/40671b68-872b-4292-bfb2-07b3e52875e3" />
 
 <img width="263" height="52" alt="image" src="https://github.com/user-attachments/assets/df454234-0e20-47a7-951c-cd184d69b2b4" />
 
-Guardamos el archivo y vamos a hablitar CGI en Apache, puesto que lo necesitamos para ver las gráficas:
+Guardamos el archivo y vamos a hablitar CGI en Apache, puesto que lo necesitamos para ver las gráficas. Reiniciamos apache para aplicar los cambios:
 
 <img width="455" height="158" alt="image" src="https://github.com/user-attachments/assets/29b0d47e-7e99-48c4-a492-d8f20d091fb1" />
 
-Como último paso, generamos las estadísticas iniciales:
+Como último paso, generamos las estadísticas iniciales con:
+
+~~~
+sudo /usr/lib/cgi-bin/awstats.pl -config=centro.intranet -update
+~~~
 
 <img width="968" height="263" alt="image" src="https://github.com/user-attachments/assets/cbc0cde3-e0fa-4ca9-ab55-2f747c977d7d" />
 
@@ -165,7 +217,11 @@ Y para comprobarlo, nos vamos al navegador y ponemos lo siguiente:
 
 ## 7.- NGINX y PHPMyAdmin
 
-Para que no haya interferencias entre apache y nginx, nginx y phpmyadmin lo vamos a poner en el puerto 8080. Primero, lo instalamos. Como Apache usa PHP como módulo, Nginx necesita php-fpm:
+Para que no haya interferencias entre apache y nginx, nginx y phpmyadmin lo vamos a poner en el puerto 8080. Primero, lo instalamos. Como Apache usa PHP como módulo, Nginx necesita php-fpm, así que instalamos ambos:
+
+~~~
+sudo apt install nginx php-fm -y
+~~~
 
 <img width="483" height="40" alt="image" src="https://github.com/user-attachments/assets/f19ad461-515f-4c7c-86ed-c09b7831e3ec" />
 
@@ -173,8 +229,7 @@ Si Nginx falla al iniciarse es porque el puerto 80 está ocupado por Apache. Eso
 
 <img width="559" height="31" alt="image" src="https://github.com/user-attachments/assets/62e3a884-993f-4a51-83bc-04eed85b4c73" />
 
-
-Y editamos las líneas: 
+Y editamos las líneas, para poner el puerto correcto, darle más prioridad al index.php y activar el reconocimiento de php-fm: 
 
 <img width="368" height="75" alt="image" src="https://github.com/user-attachments/assets/209b86fb-aea5-440e-ab7d-74fbf259de1d" />
 
@@ -187,8 +242,11 @@ Y reiniciamos ngincx con sudo systemctl restart nginx. Comprobamos su estado:
 
 <img width="1016" height="407" alt="image" src="https://github.com/user-attachments/assets/e56d4476-3535-48d0-891b-6a360a17315c" />
 
-
-Lo siguiente va a ser instalar PHPMyAdmin, con sudo apt install phpmyadmin -y, y se nos va directamente a la configuración de phpmyadmin.
+Lo siguiente va a ser instalar PHPMyAdmin, con 
+~~~
+sudo apt install phpmyadmin -y
+~~~
+y se nos va directamente a la configuración de phpmyadmin.
 No marcamos ninguna de las dos opciones, nos vamos directamente a Aceptar:
 
 <img width="866" height="227" alt="image" src="https://github.com/user-attachments/assets/da2a6069-2ce7-4cba-8462-58a9d487bcb5" />
