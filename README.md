@@ -30,3 +30,4 @@ Actividades del módulo de servicios de red e internet
 | [Act 7](Tema_1/Actividad_7.md)      | Redirecciones      |
 | [Act 8](Tema_1/Actividad_8.md)      | VirtualHost       |
 | [Act 9](Tema_1/Actividad_9.md)      | Autenticación     |
+| [Act 10](Tema_1/Actividad_10.md)      | Certificado SSL      |
