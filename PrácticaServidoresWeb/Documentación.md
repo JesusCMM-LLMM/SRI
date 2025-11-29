@@ -143,8 +143,6 @@ Vamos a configurar el VirtualHost para Python de la siguiente manera:
 sudo nano /etc/apache2/sites-available/departamentos.conf
 ~~~
 
-<img width="652" height="32" alt="image" src="https://github.com/user-attachments/assets/34465c9b-0977-4a92-a8c9-f1f5d18feb9c" />
-
 Dentro de virtualhost le estamos diciendo el nombre de dominio así como donde está su raíz, le decimos al módulo WSGI dónde se encuentra el script y de momento, usamos un require all granted:
 
 <img width="946" height="286" alt="image" src="https://github.com/user-attachments/assets/0799608c-7c3f-4fa4-89f8-4001d018b4f6" />
