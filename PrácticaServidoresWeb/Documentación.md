@@ -95,8 +95,6 @@ Por último, vamos a configurar el VirtualHost, creando el archivo de configurac
 sudo nano /etc/apache2/sites-available/centro.conf
 ~~~
 
-<img width="609" height="31" alt="image" src="https://github.com/user-attachments/assets/86ff82ab-5b87-4f84-adaf-67227861c167" />
-
 Lo creamos con esta configuración:
 
 <img width="879" height="219" alt="image" src="https://github.com/user-attachments/assets/393f0a14-1038-467b-bd6c-402407a6cab2" />
