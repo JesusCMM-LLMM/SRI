@@ -81,6 +81,14 @@ sudo certbot --apache
 
 <img width="880" height="399" alt="image" src="https://github.com/user-attachments/assets/90a0f218-f90f-4b32-9ebe-f292504ba51f" />
 
+Después de borrar el certificado manual anterior porque me daba conflictos en el puerto 443, ya lo he podido poner en marcha:
+
+<img width="1893" height="165" alt="image" src="https://github.com/user-attachments/assets/bd3a1a73-ac73-4922-9588-ec050a11e0cf" />
+
+Y aquí vemos que funciona: 
+
+<img width="1274" height="556" alt="image" src="https://github.com/user-attachments/assets/5cc24b03-89b7-4831-a730-6c6a8cafa069" />
+
 Y con esto ya hemos acabado. 
 
 
