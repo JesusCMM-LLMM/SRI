@@ -22,9 +22,13 @@ Y hacemos lo mismo hasta el usuario5.
 
 <img width="420" height="115" alt="image" src="https://github.com/user-attachments/assets/585bdf4e-8a9e-4e9d-b714-024e1df82b5e" />
 
+Ahora, en /etc/apache2/apache2.conf vamos a poner lo siguiente:
+
 <img width="452" height="154" alt="image" src="https://github.com/user-attachments/assets/bed0bd23-a94e-4f18-b400-bd02940c4831" />
 
 
 ## 4. Crea un directorio llamado privado2 que permita el acceso sólo a los usuarios del grupo1.
+
+Ahora, en /etc/apache2/apache2.conf vamos a poner lo siguiente:
 
 <img width="454" height="172" alt="image" src="https://github.com/user-attachments/assets/3da797b6-3447-41ae-b9c1-e405e148af31" />
