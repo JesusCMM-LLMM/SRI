@@ -32,3 +32,16 @@ Ahora, en /etc/apache2/apache2.conf vamos a poner lo siguiente:
 Ahora, en /etc/apache2/apache2.conf vamos a poner lo siguiente:
 
 <img width="454" height="172" alt="image" src="https://github.com/user-attachments/assets/3da797b6-3447-41ae-b9c1-e405e148af31" />
+
+Podemos comprobar desde el navegador que solo si eres usuario1 o usuario2 puedes acceder:
+
+<img width="875" height="428" alt="image" src="https://github.com/user-attachments/assets/9c300cda-2cd2-4a88-8003-75d7fc2c49c3" />
+
+## 5. Esta parte es teórica, solo tenemos que mirar esa documentación.
+
+## 6. En el directorio privado2 haz que sólo sea accesible desde el localhost, y estudia cómo se comporta la autorización si ponemos: satisfy any, satisfy all
+
+Primero de todo, activamos el módulo:
+
+<img width="674" height="70" alt="image" src="https://github.com/user-attachments/assets/6dde48b3-d14b-4425-b776-980071cbf155" />
+
