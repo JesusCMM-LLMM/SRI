@@ -28,7 +28,7 @@ Acortamos la url de la página principal de gooogle
 
 ## Ejemplo 5: Uso del RewriteCond
 
-Esto no lo tengo muy claro, pero nos deja evitar que alguien se apropie de nuestro contenido con una imagen rpedefinida
+Esto no lo tengo muy claro, pero nos deja evitar que alguien se apropie de nuestro contenido con una imagen predefinida
 
 <img width="929" height="165" alt="image" src="https://github.com/user-attachments/assets/66784c29-7771-4430-8c28-f580b1b00a47" />
 
