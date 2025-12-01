@@ -79,6 +79,8 @@ sudo certbot --apache
 ~~~
 <img width="754" height="565" alt="image" src="https://github.com/user-attachments/assets/fcca160f-42dd-413f-8070-043b9ced79f1" />
 
+<img width="880" height="399" alt="image" src="https://github.com/user-attachments/assets/90a0f218-f90f-4b32-9ebe-f292504ba51f" />
+
 Y con esto ya hemos acabado. 
 
 
