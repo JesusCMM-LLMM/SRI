@@ -87,7 +87,7 @@ Después de borrar el certificado manual anterior porque me daba conflictos en e
 
 Y aquí vemos que funciona: 
 
-<img width="1274" height="556" alt="image" src="https://github.com/user-attachments/assets/5cc24b03-89b7-4831-a730-6c6a8cafa069" />
+<img width="1081" height="478" alt="image" src="https://github.com/user-attachments/assets/d277ea32-0015-4da3-a17a-9c95a64a9efe" />
 
 Y con esto ya hemos acabado. 
 
