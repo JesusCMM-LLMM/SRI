@@ -1,5 +1,5 @@
 # Actividad 10 - SSL
-Teniendo una instancia EC2 creada, nos conectamos por SSH desde nuestro equipo. 
+#1. Teniendo una instancia EC2 creada, nos conectamos por SSH desde nuestro equipo. 
 
 <img width="1091" height="788" alt="image" src="https://github.com/user-attachments/assets/5b985e76-9122-4ddb-a9a0-343bca9c8090" />
 
@@ -63,8 +63,23 @@ Activamos el módulo rewrite (sudo a2enmod rewrite) y reiniciamos para que surta
 <img width="520" height="251" alt="image" src="https://github.com/user-attachments/assets/e1a76fa7-4065-42f8-a968-3b1aaa4b1d38" />
 
 
+#2. CERTBOT
+Vamos a usar una Autoridad de Certificación (Let's Encrypt) para tener un certificado válido que los navegadores no marquen como peligroso.
+Nos registramos en https://www.noip.com/es-MX y creamos un hostname con la ip pública de nuestra instancia de EC2: 
+<img width="1266" height="258" alt="image" src="https://github.com/user-attachments/assets/bebb406e-ea9e-4406-8a3a-6dbba76fff83" />
 
+De nuevo en nuestra consola conectada por SSH a nuestra instancia, instalamos certbot con:
 
+<img width="698" height="57" alt="image" src="https://github.com/user-attachments/assets/9a2708b2-7539-4692-af8c-16d21523353b" />
+
+Y ya solicitamos el certificado con certbot:
+
+~~~
+sudo certbot --apache
+~~~
+<img width="754" height="565" alt="image" src="https://github.com/user-attachments/assets/fcca160f-42dd-413f-8070-043b9ced79f1" />
+
+Y con esto ya hemos acabado. 
 
 
 
