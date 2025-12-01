@@ -58,7 +58,10 @@ Configuramos el virtual host de HTTP para que redirija todo el tráfico a HTTPS,
 
 <img width="759" height="642" alt="image" src="https://github.com/user-attachments/assets/27f0bbe1-e29f-4dc8-a626-76f6dc9ba5ca" />
 
-Activamos el módulo rewrite (sudo a2enmod rewrite) y reiniciamos para que surtan efecto los cambios. 
+Activamos el módulo rewrite (sudo a2enmod rewrite) y reiniciamos para que surtan efecto los cambios. Como estoy desde la consola lo compruebo con un curl:
+
+<img width="520" height="251" alt="image" src="https://github.com/user-attachments/assets/e1a76fa7-4065-42f8-a968-3b1aaa4b1d38" />
+
 
 
 
