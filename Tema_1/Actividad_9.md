@@ -26,6 +26,10 @@ Ahora, en /etc/apache2/apache2.conf vamos a poner lo siguiente:
 
 <img width="452" height="154" alt="image" src="https://github.com/user-attachments/assets/bed0bd23-a94e-4f18-b400-bd02940c4831" />
 
+Lo comprobamos:
+
+<img width="510" height="147" alt="image" src="https://github.com/user-attachments/assets/0a17ef28-45a7-47f5-a7d9-4622ae60f998" />
+
 
 ## 4. Crea un directorio llamado privado2 que permita el acceso sólo a los usuarios del grupo1.
 
@@ -37,6 +41,11 @@ Podemos comprobar desde el navegador que solo si eres usuario1 o usuario2 puedes
 
 <img width="875" height="428" alt="image" src="https://github.com/user-attachments/assets/9c300cda-2cd2-4a88-8003-75d7fc2c49c3" />
 
+Si ponemos a algun usuario del grupo2: 
+
+<img width="967" height="306" alt="image" src="https://github.com/user-attachments/assets/8da849f3-3712-4cf5-bec5-ae4ffe789e1f" />
+
+
 ## 5. Esta parte es teórica, solo tenemos que mirar esa documentación.
 
 ## 6. En el directorio privado2 haz que sólo sea accesible desde el localhost, y estudia cómo se comporta la autorización si ponemos: satisfy any, satisfy all
@@ -45,3 +54,10 @@ Primero de todo, activamos el módulo:
 
 <img width="674" height="70" alt="image" src="https://github.com/user-attachments/assets/6dde48b3-d14b-4425-b776-980071cbf155" />
 
+La primera, con Satisfy All nos dice que debemos cumplir todas las condiciones (entrar desde localhost y que usuario y contraseña sean reconocidos)
+
+<img width="372" height="268" alt="image" src="https://github.com/user-attachments/assets/5240c034-db88-446d-9298-961b577fdf91" />
+
+Y en el segundo caso, con Satisfy Any, solo tiene que cumplirse uno:
+
+<img width="391" height="270" alt="image" src="https://github.com/user-attachments/assets/5d73f876-9eba-4825-a211-20428db7647a" />
