@@ -39,5 +39,11 @@ Vamos a usar a2ensite para habilitarlos
 
 Modificamos el archivo /etc/hosts:
 
-![alt text](image-7.png)
+<img width="464" height="154" alt="image" src="https://github.com/user-attachments/assets/960f5264-e8e2-47e3-990e-780321e11666" />
+
+Y comprobamos ambos dominios:
+
+<img width="546" height="173" alt="image" src="https://github.com/user-attachments/assets/4c1e1b08-0796-4097-98da-753f734ab9cd" />
+
+<img width="551" height="176" alt="image" src="https://github.com/user-attachments/assets/060f3a76-3e87-4317-9b00-c2f2559c29db" />
 
