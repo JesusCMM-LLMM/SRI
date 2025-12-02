@@ -18,7 +18,7 @@ Aparte, vamos a modificar ciertos permisos de lectura:
 
 ## 3.- Crear una Página de Prueba para cada Virtual Host
 
-Vamos a copiar el archivo de configuración de configuración por defecto para ejemplo.com, y una vez copiado lo editamos:
+Vamos a copiar el archivo de configuración por defecto para ejemplo.com, y una vez copiado lo editamos:
 
 ![alt text](image-3.png)
 
