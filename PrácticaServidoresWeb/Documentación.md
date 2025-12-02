@@ -216,7 +216,7 @@ Y para comprobarlo, nos vamos al navegador y ponemos lo siguiente:
 Para que no haya interferencias entre apache y nginx, nginx y phpmyadmin lo vamos a poner en el puerto 8080. Primero, lo instalamos. Como Apache usa PHP como módulo, Nginx necesita php-fpm, así que instalamos ambos:
 
 ~~~
-sudo apt install nginx php-fm -y
+sudo apt install nginx php-fpm -y
 ~~~
 
 <img width="483" height="40" alt="image" src="https://github.com/user-attachments/assets/f19ad461-515f-4c7c-86ed-c09b7831e3ec" />
