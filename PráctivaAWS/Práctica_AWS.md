@@ -212,7 +212,7 @@ Por último vamos a restaurar los archivos que había copiando su contenido desd
 
 <img width="811" height="76" alt="image" src="https://github.com/user-attachments/assets/2d01601a-827f-43eb-8102-3441d0385c33" />
 
-Con df -h vemos que está montando: 
+Con df -h vemos que está montado: 
 
 <img width="1084" height="326" alt="image" src="https://github.com/user-attachments/assets/4e9ee8ef-704c-41ba-87fe-ccc54e1e30fa" />
 
