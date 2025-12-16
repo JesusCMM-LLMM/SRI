@@ -139,6 +139,11 @@ Ahora le damos a asociar y usamos la opción del DNS:
 
 <img width="1794" height="513" alt="image" src="https://github.com/user-attachments/assets/9e454a75-50c6-43d2-8723-1c57fc80f4f8" />
 
+Y lo montamos mediante SSH: 
+
+<img width="1103" height="88" alt="image" src="https://github.com/user-attachments/assets/d8ea6e88-6658-4f88-ba0d-66ba19529ee2" />
+
+
 
 
 
