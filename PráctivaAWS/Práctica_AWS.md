@@ -214,7 +214,7 @@ Por último vamos a restaurar los archivos que había copiando su contenido desd
 
 Con df -h vemos que está montado: 
 
-<img width="1084" height="326" alt="image" src="https://github.com/user-attachments/assets/4e9ee8ef-704c-41ba-87fe-ccc54e1e30fa" />
+<img width="1076" height="436" alt="image" src="https://github.com/user-attachments/assets/bd53c26c-4db9-4888-9560-e986355af36d" />
 
 
 
