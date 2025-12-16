@@ -169,7 +169,15 @@ Ahora creamos la base de datos, el usuario y la contraseña:
 
 <img width="721" height="268" alt="image" src="https://github.com/user-attachments/assets/68aeec18-c85d-46d9-954a-9742c69d3deb" />
 
+Me daba error al entrar desde el navegador, pero era que no tenía bien un grupo de seguridad, el de rds. Lo he solucionado:
 
+<img width="1629" height="497" alt="image" src="https://github.com/user-attachments/assets/f7e18172-3e1b-424d-ab28-11525114378f" />
+
+Una vez arreglado todo, ya nos aparece la página de configuración de wordpress: 
+
+<img width="1101" height="689" alt="image" src="https://github.com/user-attachments/assets/666a18b3-fad0-4a45-bbe5-acc5c82c8da1" />
+
+Seguimos hasta completar la instalación: 
 
 
 
