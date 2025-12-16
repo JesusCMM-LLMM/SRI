@@ -177,18 +177,44 @@ Una vez arreglado todo, ya nos aparece la página de configuración de wordpress
 
 <img width="1101" height="689" alt="image" src="https://github.com/user-attachments/assets/666a18b3-fad0-4a45-bbe5-acc5c82c8da1" />
 
-Seguimos hasta completar la instalación: 
+Estos son los datos para conectarnos, en lugar de localhost tenemos que poner el nombre de la base de datos RDS: 
+
+<img width="741" height="525" alt="image" src="https://github.com/user-attachments/assets/0ba76886-b84b-4673-b275-c3dc41332117" />
+
+He tenido que crear el wp-config.php pero una vez creado, ya he podido empezar la instalación. 
+
+<img width="828" height="883" alt="image" src="https://github.com/user-attachments/assets/b45711bf-4a01-40bb-bec2-be388b648007" />
+
+Y listo:
+
+<img width="744" height="292" alt="image" src="https://github.com/user-attachments/assets/77f761b7-3ba7-4b28-bf27-1e26683c4a34" />
+
+Y conexión exitosa:
+
+<img width="1232" height="718" alt="image" src="https://github.com/user-attachments/assets/bc15e2de-4256-4094-99ec-9e3f1097d0d2" />
 
 
+# 7. Conexión de EFS a directorio WP-Content
 
+Nos vamos a la carpeta de instalación con cd /var/www/html/wordpress. Dentro, para hacer un backup de lo que ya tenemos: 
 
+<img width="733" height="57" alt="image" src="https://github.com/user-attachments/assets/9c79b8a0-ce43-4f22-ac29-dba5fa2b53d3" />
 
+Ahora creamos el nuevo punto de montaje vacío:
 
+<img width="649" height="498" alt="image" src="https://github.com/user-attachments/assets/482f4ae2-47ad-4d4e-b951-3baee59d23f4" />
 
+Vamos a montar el EFS pero ahora apuntando a wp-content: 
 
+<img width="1101" height="72" alt="image" src="https://github.com/user-attachments/assets/d07e4222-9470-480c-be12-3c331f01d285" />
 
+Por último vamos a restaurar los archivos que había copiando su contenido desde wp-content-old y le asignamos el usuario correcto para finalizar: 
 
+<img width="811" height="76" alt="image" src="https://github.com/user-attachments/assets/2d01601a-827f-43eb-8102-3441d0385c33" />
 
+Con df -h vemos que está montando: 
+
+<img width="1084" height="326" alt="image" src="https://github.com/user-attachments/assets/4e9ee8ef-704c-41ba-87fe-ccc54e1e30fa" />
 
 
 
