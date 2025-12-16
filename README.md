@@ -1,11 +1,17 @@
 # SRI - Índice 
-Actividades del módulo de servicios de red e internet
+Actividades del módulo de servicios de red e internet  
 
 # Práctica Servidores Web
 
 | Ejercicio        | Descripción                |
 | -------------    | -------------              |
 | [Práctica Primer Trimestre](/PrácticaServidoresWeb/Documentación.md)      | Documentación de la práctica sobre servidores web     |
+
+# Práctica AWS
+
+| Ejercicio        | Descripción                |
+| -------------    | -------------              |
+| [Práctica AWS](/PráctivaAWS/Práctica_AWS.md)      | Documentación de la práctica de AWS     |
 
 ## Tema 0 
 
