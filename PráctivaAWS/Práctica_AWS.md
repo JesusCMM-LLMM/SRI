@@ -143,10 +143,31 @@ Y lo montamos mediante SSH:
 
 <img width="1103" height="88" alt="image" src="https://github.com/user-attachments/assets/d8ea6e88-6658-4f88-ba0d-66ba19529ee2" />
 
+Y aquí la comprobación: 
 
+<img width="1096" height="316" alt="image" src="https://github.com/user-attachments/assets/c2df831e-de37-41cc-b5ae-0808c4a78391" />
 
+# 6. Descarga de wordpress
 
+Dentro de /var/www/html descargamos wordpress: 
 
+<img width="963" height="331" alt="image" src="https://github.com/user-attachments/assets/0bfea48a-dba7-48f1-a984-49c1ffe9bd04" />
+
+Y lo descomprimimos: 
+
+<img width="577" height="144" alt="image" src="https://github.com/user-attachments/assets/48d78d76-83c7-4cfb-86ff-84e8425cd86e" />
+
+Descargamos el cliente de mysql: 
+
+<img width="998" height="324" alt="image" src="https://github.com/user-attachments/assets/24df98c0-3c75-41e5-9108-0a70c8dce4a6" />
+
+Al intentar conectarnos a la base de datos nos daba error de certificado SSL, basicamente la instancia no tenía el certificado de Amazon RDS, así que lo he descargado y he apuntado a él durante la conexión con la base de datos:
+
+<img width="1101" height="577" alt="image" src="https://github.com/user-attachments/assets/0e2d8762-5d95-4950-ab06-dca346ffe6df" />
+
+Ahora creamos la base de datos, el usuario y la contraseña:
+
+<img width="721" height="268" alt="image" src="https://github.com/user-attachments/assets/68aeec18-c85d-46d9-954a-9742c69d3deb" />
 
 
 
