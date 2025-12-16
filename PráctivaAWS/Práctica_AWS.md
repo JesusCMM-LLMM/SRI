@@ -110,6 +110,49 @@ Y ya le damos a crear.
 
 Una vez creada la base de datos,vamos a establecer la conexión con la instancia con el asistente que RDS nos proporciona. Establecerá los permisos necesarios en los grupos de seguridad de la instancia y la BD sin mayor complicación.
 
+<img width="1425" height="304" alt="image" src="https://github.com/user-attachments/assets/3894c948-54ef-470e-a9b7-dfedfb7b53ec" />
+
+Simplemente le damos a conectar: 
+
+<img width="1362" height="401" alt="image" src="https://github.com/user-attachments/assets/8d3fe0db-519c-4528-84df-8ca50ff19567" />
+
+Y esperamos hasta que se completa: 
+
+<img width="1613" height="294" alt="image" src="https://github.com/user-attachments/assets/484b4061-e35c-4cbc-be43-59c9c06fcee0" />
+
+
+# 5. Elastic File System.
+
+Nos vamos al apartado de EFS para crear el sistema de almacenamiento externo que vamos a conectar a la instancia y que más tarde conectaremos a wordpress.
+
+<img width="818" height="829" alt="image" src="https://github.com/user-attachments/assets/222cb4c2-3198-4c1e-a1bc-a240c5f4da20" />
+
+Comprobamos que está bien creado:
+
+<img width="1578" height="338" alt="image" src="https://github.com/user-attachments/assets/53e10c2d-a038-4398-abef-68fadf3e2ff8" />
+
+Ahora, en los grupos de seguridad de la instancia EC2 que tenemos, vamos a editar el grupo de seguridad para permitir el acceso de la instancia al EFS. 
+Ahora le damos a asociar y usamos la opción del DNS: 
+
+<img width="1794" height="513" alt="image" src="https://github.com/user-attachments/assets/9e454a75-50c6-43d2-8723-1c57fc80f4f8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
