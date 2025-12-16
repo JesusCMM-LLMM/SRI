@@ -132,6 +132,9 @@ Comprobamos que está bien creado:
 <img width="1578" height="338" alt="image" src="https://github.com/user-attachments/assets/53e10c2d-a038-4398-abef-68fadf3e2ff8" />
 
 Ahora, en los grupos de seguridad de la instancia EC2 que tenemos, vamos a editar el grupo de seguridad para permitir el acceso de la instancia al EFS. 
+
+<img width="1611" height="391" alt="image" src="https://github.com/user-attachments/assets/06570c88-be56-4d70-a904-4fdfcdc7611e" />
+
 Ahora le damos a asociar y usamos la opción del DNS: 
 
 <img width="1794" height="513" alt="image" src="https://github.com/user-attachments/assets/9e454a75-50c6-43d2-8723-1c57fc80f4f8" />
