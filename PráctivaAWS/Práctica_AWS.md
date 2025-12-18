@@ -52,7 +52,7 @@ Me voy a conectar por SSH:
 
 # 3. Apache y PHP
 
-Hemos puesto los paquetes del repositorio apt al día,m y ahora vamos a instalar apache:
+Hemos puesto los paquetes del repositorio apt al día y ahora vamos a instalar apache:
 
 <img width="920" height="386" alt="image" src="https://github.com/user-attachments/assets/fb93361e-db4d-46aa-a47c-ec0f376046f9" />
 
