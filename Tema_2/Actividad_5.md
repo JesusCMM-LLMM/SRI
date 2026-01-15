@@ -31,9 +31,11 @@ Como vemos en las capturas anteriores, esto es algo que tenía configurado previ
 
 <img width="604" height="164" alt="image" src="https://github.com/user-attachments/assets/49cdec87-330b-4d3c-89b6-26602b9b67e2" />
 
-Ahora solo vamos a añadirle  la clausula "forward only;" y ya que estamos modificamos los valores de dnssec validation a yes: 
+Ahora solo vamos a añadirle la clausula "forward only;" y ya que estamos modificamos los valores de dnssec validation a yes: 
 
 <img width="362" height="126" alt="image" src="https://github.com/user-attachments/assets/c6f9f73e-5909-456e-930a-3175d1285a4f" />
+
+Y con esto ya lo tendríamos. 
 
 
 
