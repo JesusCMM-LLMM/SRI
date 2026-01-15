@@ -37,3 +37,10 @@ Actividades del módulo de servicios de red e internet
 | [Act 8](Tema_1/Actividad_8.md)      | VirtualHost       |
 | [Act 9](Tema_1/Actividad_9.md)      | Autenticación     |
 | [Act 10](Tema_1/Actividad_10.md)      | Certificado SSL      |
+
+## Tema 2 - DNS
+
+| Ejercicio        | Descripción                |
+| -------------    | -------------              |
+| [Act 5](Tema_2/Actividad_5.md)      | Caching & forwarding       |
+| [Act 6](Tema_2/Actividad_6.md)      | Master DNS       |
