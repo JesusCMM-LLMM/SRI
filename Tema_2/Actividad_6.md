@@ -51,3 +51,4 @@ Y ahora hacemos las comprobaciones:
 
 <img width="732" height="485" alt="image" src="https://github.com/user-attachments/assets/8c1506b6-d9c4-4473-b741-bd9653338009" />
 
+Vemos que todas las comprobaciones han dado resultados positivos, ya que las ANSWER SECTION tienen los datos esperados. 
