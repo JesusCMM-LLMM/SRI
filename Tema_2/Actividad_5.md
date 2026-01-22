@@ -1,7 +1,7 @@
 # Punto de partida e instalación de bind
 
 - DNS Server 192.168.197.99/24 (Ubuntu server con lightdm)
-- Cliente 
+- Cliente 192.168.197.79/24 (Cliente limpio)
 
 Lo primero que vamos a hacer es instalar bind9 mediante apt: 
 
