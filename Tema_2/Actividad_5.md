@@ -1,49 +1,67 @@
+# Punto de partida e instalación de bind
+
+- DNS Server 192.168.197.99/24 (Ubuntu server con lightdm)
+- Cliente 
+
+Lo primero que vamos a hacer es instalar bind9 mediante apt: 
+
+<img width="615" height="158" alt="image" src="https://github.com/user-attachments/assets/e5485940-5e6d-4b65-9563-fccd73679add" />
+
 # Caching & Forwarding
 
-Vamos a partir de una máquina con Ubuntu Server cuya IP es 192.168.1.1/24 y una máquina Ubuntu Escritorio con IP 192.168.1.11/24. 
-Lo primero que vamos a hacer es descargar bind9 y sus complementos: 
+Para configurarlo primero como un servidor de caché de DNS, nos vamos a la carpeta donde están los archivos de configuración en /etc/bind y el fichero que vamos a modificar es el named.conf.options:
 
-<img width="530" height="232" alt="image" src="https://github.com/user-attachments/assets/3e9ccccd-fe1f-49e3-a876-334d019ed55e" />
+<img width="601" height="338" alt="image" src="https://github.com/user-attachments/assets/3ab2c7cc-fd9f-402e-b55c-0f0d44419986" />
 
-## Configurar como Caching DNS Server
+Aquí lo que vamos a declarar es una lista de control de entrada con el rango de IP que vamos a permitir que escuchen las peticiones que hagamos a nuestro servidor DNS. Vamos a añadir este bloque de ACL arriba del bloque options y a especificar los clientes en los que confiamos: 
 
-Ahora nos vamos a la  carpeta donde están guardados los archivos de configuración: 
+<img width="366" height="158" alt="image" src="https://github.com/user-attachments/assets/94c64fee-a60e-4abe-8445-e7972dd72db0" />
 
-<img width="548" height="303" alt="image" src="https://github.com/user-attachments/assets/57c19b89-2b9b-4a2c-bf20-f35a71416f85" />
+Ahora que ya tenemos estos clientes definidos, dentro de options vamos a permitir las consultas:
 
-Vamos a modificar named.conf.options para otorgar permisos de acceso mediante una lista ACL:
+<img width="409" height="287" alt="image" src="https://github.com/user-attachments/assets/dd327996-31a7-4112-8177-803c89a03319" />
 
-<img width="887" height="513" alt="image" src="https://github.com/user-attachments/assets/d70559a6-7bf3-4ea4-948e-6d57e14bbe3d" />
+Guardamos, y vamos a comprobar la sintaxis de nuestro archivo de configuración con sudo named-checkconf:
 
-Así está nuestro archivo, ahora vamos a crear, por encima de < options {.. >, una etiqueta acl: 
+<img width="498" height="75" alt="image" src="https://github.com/user-attachments/assets/bf9f1922-d3e6-47f6-85c2-c42768a8db52" />
 
-<img width="777" height="162" alt="image" src="https://github.com/user-attachments/assets/22b344bf-8903-4e67-8be3-e088452330e0" />
+Y reiniciamos bind para aplicar los cambios con sudo systemctl restart bind9. En los logs vemos que está escuchando la IP de nuestro servidor:
 
-Donde especificamos la subred en la que vamos a permitir acceso, ya que ambas máquinas están en la misma. Una vez que tenemos esta lista permitida de clientes, vamos a añadir en options las capacidades que debe tener añadiendo estas líneas:
+<img width="1086" height="191" alt="image" src="https://github.com/user-attachments/assets/edeb9714-038f-4a22-a3bf-fcd0092f162d" />
 
-<img width="757" height="466" alt="image" src="https://github.com/user-attachments/assets/c422ab91-45b3-4870-a9f9-3f883fab8c0b" />
+# Forwarding
 
-Guardamos y con esto ya tendríamos todo lo necesario para usar este Ubuntu Server como Servidor de caché DNS
+Ahora vamos a configurarlo además como un servidor forwarding. Para esto, en el mismo archivo que hemos modificado, simplemente descomentamos el bloque de forwarders y añadimos otras opciones: 
 
-## Forwarding
+<img width="565" height="360" alt="image" src="https://github.com/user-attachments/assets/edea9e70-712a-44f0-bf3a-1aa4ebd68f61" />
 
-Como vemos en las capturas anteriores, esto es algo que tenía configurado previamente, con el DNS de nuestro router virtual y el DNS de Google. 
+Comprobamos la sintaxis y vemos este error: 
 
-<img width="604" height="164" alt="image" src="https://github.com/user-attachments/assets/49cdec87-330b-4d3c-89b6-26602b9b67e2" />
+<img width="661" height="69" alt="image" src="https://github.com/user-attachments/assets/b01fdbfe-c208-4131-8331-1fbee6b960cd" />
 
-Ahora solo vamos a añadirle la clausula "forward only;" y ya que estamos modificamos los valores de dnssec validation a yes: 
+Simplemente eliminamos esa línea y la de dnssec-validation auto porque está repetida y comprobamos de nuevo. Una vez todo esté correcto, vamos a reiniciar el servicio. 
 
-<img width="362" height="126" alt="image" src="https://github.com/user-attachments/assets/c6f9f73e-5909-456e-930a-3175d1285a4f" />
+# Comprobación en un cliente: 
 
-Y con esto ya lo tendríamos. 
+Después de configurar el archivo /etc/resolve.conf de la siguiente manera:
 
+<img width="286" height="117" alt="image" src="https://github.com/user-attachments/assets/91e4a33f-ce24-4a57-a89d-35b41994a339" />
 
+Ya podemos empezar a comprobar con el cliente. 
 
+<img width="781" height="188" alt="image" src="https://github.com/user-attachments/assets/d70d90e3-50d6-4cfc-ac3b-eb73bb6afd4d" />
 
+<img width="647" height="719" alt="image" src="https://github.com/user-attachments/assets/1229184c-b0bb-44aa-be0c-dfd9d783ba2d" />
 
+Y la comprobación inversa:
 
+<img width="836" height="350" alt="image" src="https://github.com/user-attachments/assets/62b613ac-d9ff-4485-a5cc-18ae02558884" />
 
+También vamos a comprobar los logs que dejamos corriendo en el servidor:
 
+<img width="1250" height="322" alt="image" src="https://github.com/user-attachments/assets/229414c0-1169-4b56-ad7c-a3d9d6b4f1bf" />
+
+Y con esto habríamos terminado. 
 
 
 
