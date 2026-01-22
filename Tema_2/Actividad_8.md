@@ -28,4 +28,53 @@ Ahora nos vamos al cliente y vamos a comprobar las modificaciones hechas:
 
 # Opcional - Scripts para crear subdominios.
 
+Vamos a dividir este apartado en tres subapartados, y cambiarle ligeramente el orden: primero vamos a ver que es el $INCLUDE, luego vamos a hacer un script en bash y por último lo intentaremos en python. 
+
+## La directiva $INCLUDE
+
+La directiva $INCLUDE nos permite separar el archivo de la zona principal de los archivos que describen los subdominios. Tomando como referencia nuestro ejemplo, vamos a tener el archivo de zona "marisma.intranet" por un lado, y el archivo de zona del subdominio "informatica.marisma.intranet" por otro, pero en el archivo de zona principal, le vamos a decir que lea el archivo del subdominio y lo incluya, tratándolo como si estuviera dentro. 
+
+## Script en bash
+
+~~~
+#!/bin/bash
+
+# Pide subdominio e ip al usuario por teclado
+read -p "Introduce el nombre del subdominio (ej: ventas): " SUBDOMINIO
+read -p "Introduce la IP para este subdominio: " IP
+
+ARCHIVO_MAIN="/etc/bind/db.marisma.intranet"
+ARCHIVO_SUB="/etc/bind/db.$SUBDOMINIO"
+
+# Crea el archivo .db con lo básico, los 3 hosts y lo guarda en el fichero del subdominio
+echo "; Configuración para $SUBDOMINIO" | sudo tee $ARCHIVO_SUB
+echo "www.$SUBDOMINIO   IN   A   $IP" | sudo tee -a $ARCHIVO_SUB
+echo "ftp.$SUBDOMINIO   IN   A   $IP" | sudo tee -a $ARCHIVO_SUB
+echo "smtp.$SUBDOMINIO  IN   A   $IP" | sudo tee -a $ARCHIVO_SUB
+
+# Añade el INCLUDE al archivo principal comprobando si ya existe
+if grep -q "$ARCHIVO_SUB" "$ARCHIVO_MAIN"; then
+    echo "El subdominio ya estaba incluido en el archivo principal."
+else
+    echo "\$INCLUDE $ARCHIVO_SUB" | sudo tee -a $ARCHIVO_MAIN
+    echo "Incluido nuevo archivo en la zona principal."
+fi
+
+# Reinicia BIND y comprueba
+echo "Reiniciando BIND9..."
+sudo systemctl restart named
+sudo systemctl status named --no-pager
+~~~
+
+Captura de su funcionamiento:
+
+<img width="884" height="613" alt="image" src="https://github.com/user-attachments/assets/6513f7e2-eb7d-4da2-8495-767d197f3f77" />
+
+Captura de la creación del archivo db.alumnos:
+
+<img width="455" height="125" alt="image" src="https://github.com/user-attachments/assets/3d5bfabf-fb20-4e6b-b57a-08c07804be56" />
+
+## Script en python
+
+
 
