@@ -74,6 +74,11 @@ Captura de la creación del archivo db.alumnos:
 
 <img width="455" height="125" alt="image" src="https://github.com/user-attachments/assets/3d5bfabf-fb20-4e6b-b57a-08c07804be56" />
 
+Y vemos que desde el cliente resuelve este subdominio:
+
+<img width="553" height="200" alt="image" src="https://github.com/user-attachments/assets/748c59cc-c590-4aba-8f58-bf7979bb8e37" />
+
+
 ## Script en python
 
 
