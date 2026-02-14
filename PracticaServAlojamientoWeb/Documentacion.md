@@ -170,10 +170,9 @@ Comprobación:
 
 Llegados a este punto, el servidor está 100% preparado. Tiene el motor listo, el FTP seguro, el DNS sabe quién es, y Apache entiende Python.
 
+# 4. El Script de Automatización.
 
-#4. El Script de Automatización.
-
-Creamos un archivo para el script (crear_cliente.sh) y este sería el script:
+Creamos un archivo para el script (nuevo_cliente.sh) y este sería el script:
 
 ~~~
 #!/bin/bash
