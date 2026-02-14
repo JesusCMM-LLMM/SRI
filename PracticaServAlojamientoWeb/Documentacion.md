@@ -267,7 +267,7 @@ EOF
 cat <<EOF > $DIR_WEB/app.wsgi
 def application(environ, start_response):
     status = '200 OK'
-    output = b'Hola! La aplicacion Python funciona en tu hosting.'
+    output = b'Hola! La aplicacion Python funciona en tu hosting. \n'
     response_headers = [('Content-type', 'text/plain'),
                         ('Content-Length', str(len(output)))]
     start_response(status, response_headers)
@@ -322,8 +322,27 @@ Vale, esto es un error que no indica que hayamos hecho nada mal. Parece que el d
 
 <img width="581" height="61" alt="image" src="https://github.com/user-attachments/assets/395349bd-3933-42cf-917c-f36762c00d50" />
 
-Ahí veo que estaba en lo correcto. Así que vamos a cambiar el netplan para que el servidos DNS sea el propio localhost:
+Ahí veo que estaba en lo correcto. Así que vamos a cambiar el netplan para que el servidor DNS sea el propio localhost. Buscamos el archivo con ls /etc/netplan/ y el mío es 50-cloud-init.yaml asi que lo edito con sudo nano /etc/netplan/50-cloud-init.yaml añadiendo a los nameservers mi dirección localhost y dejando como secundaria la de Google:
 
+<img width="343" height="295" alt="image" src="https://github.com/user-attachments/assets/e2c72b0b-fb6f-4e2c-9e31-fd325a908f3e" />
+
+Aplicamos los cambios con sudo netplan apply y listo. Ya podemos comprobar con ping:
+
+<img width="581" height="167" alt="image" src="https://github.com/user-attachments/assets/7743bd5b-1d80-4e49-9ab8-3496ca97139c" />
+
+Aunque ping sigue sin funcionar, puede deberse a que el servicio interno de red de Ubuntu (systemd-resolved) tiene una medida de seguridad por la cual a veces ignora la dirección 127.0.0.1 para evitar "bucles infinitos" de red, y se empeña en preguntarle al DNS secundario. Pero con dig nos devuelve la IP sin problemas. 
+
+Vamos a probar la web/PHP con curl:
+
+<img width="715" height="167" alt="image" src="https://github.com/user-attachments/assets/61c5337b-23ee-456a-bc25-f0bcf6c734ce" />
+
+Y la aplicación de Python:
+
+<img width="723" height="40" alt="image" src="https://github.com/user-attachments/assets/eb072c6a-5ded-4298-aadc-44ef1804c459" />
+
+* Fixed -> el salto de línea en el script original
+
+# 5. Docker.
 
 
 
