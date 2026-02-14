@@ -434,3 +434,19 @@ La comprobación con curl:
 
 <img width="785" height="70" alt="image" src="https://github.com/user-attachments/assets/7a13b604-680e-4b3d-95e1-919786b38880" />
 
+Y desde el cliente:
+
+<img width="1154" height="233" alt="image" src="https://github.com/user-attachments/assets/fef21d5e-e02d-4c82-822b-5077b6e8170c" />
+
+
+# 6. Resultados finales
+
+Resumen de la infraestructura:
+
+* Servidor Base: Ubuntu Server configurado en red manual con todo lo necesario.
+
+* Seguridad: Un servidor FTP asegurado con certificados TLS (FTPS).
+
+* Automatización Completa: Un script Bash que crea usuarios de sistema, les asigna espacio web, crea una base de datos en MariaDB con permisos totales, configura su VirtualHost en Apache (soportando PHP y Python) y registra su subdominio local en Bind9.
+
+* Contenedores: Un entorno Docker aislado ejecutando Nginx y un DNS secundario, orquestado mediante scripts y docker-compose.
