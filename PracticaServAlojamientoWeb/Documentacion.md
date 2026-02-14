@@ -26,3 +26,11 @@ Y lo vamos a configurar de la siguiente manera:
 
 <img width="1178" height="270" alt="image" src="https://github.com/user-attachments/assets/d268eacd-06b2-45de-a578-c0082a6909bd" />
 
+Lo siguiente es configurar el perfil del administrador del sistema, de este modo: 
+
+<img width="1223" height="433" alt="image" src="https://github.com/user-attachments/assets/900d51b3-e4cf-4a14-a1ae-6d9e7cfa1f13" />
+
+Por último, dejamos activo ya el servidor SSH:
+
+<img width="1280" height="343" alt="image" src="https://github.com/user-attachments/assets/6aa0717d-efdb-4113-8c6c-5c2447563f2b" />
+
