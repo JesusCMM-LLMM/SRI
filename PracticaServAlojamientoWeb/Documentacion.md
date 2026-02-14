@@ -429,4 +429,8 @@ Y ahora cuando esté completado:
 * docker ps es el comando base
 * --format table -> en lugar de una fila larguisima, formateamos la salida en formato tabla
 * {{.Names}}, {{.Image}}, {{.Status}}, {{.Ports}}: Son las variables (escritas en un formato llamado plantillas de Go) que extraen la información exacta que queremos ver.
-* 
+
+La comprobación con curl:
+
+<img width="785" height="70" alt="image" src="https://github.com/user-attachments/assets/7a13b604-680e-4b3d-95e1-919786b38880" />
+
