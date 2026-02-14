@@ -344,6 +344,18 @@ Y la aplicación de Python:
 
 <img width="718" height="58" alt="image" src="https://github.com/user-attachments/assets/4417585d-efa9-42a8-b448-435a7b526698" />
 
+Vamos a comprobarlo desde un cliente en la misma subred:
+
+<img width="738" height="204" alt="image" src="https://github.com/user-attachments/assets/e84a4052-a72e-4b35-ad1f-4cb1723fa561" />
+
+Y vamos a ver los recursos desde un navegador: 
+
+<img width="1087" height="203" alt="image" src="https://github.com/user-attachments/assets/b53fb323-c2be-4571-b882-10078ec3b1d1" />
+
+<img width="730" height="105" alt="image" src="https://github.com/user-attachments/assets/9efc8be0-da32-4981-9cf0-91a48fd3949d" />
+
+
+
 # 5. Docker.
 
 
