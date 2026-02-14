@@ -181,7 +181,7 @@ Creamos un archivo para el script (crear_cliente.sh) y este sería el script:
 # Script de automatización de alojamiento
 ################################################################################
 
-# 1. Validación de parámetros
+# Validación inicial
 if [ "$#" -ne 2 ]; then
     echo "Introduzca los parámetros cliente y contraseña, por ese orden."
     echo "Ejemplo: sudo ./crear_cliente.sh cliente1 password123"
@@ -194,11 +194,12 @@ DOMINIO="${USUARIO}.midominio.local"
 IP_SERVIDOR="192.168.193.110"
 OCTETO_FINAL="110" 
 
-echo "--- Iniciando despliegue para el usuario: $USUARIO ---"
+echo "*** Iniciando despliegue para el usuario: $USUARIO ***"
 
-# ------------------------------------------------------------------------------
-# A. Creación del usuario del sistema (Acceso FTP, SSH y SFTP) y Directorio Web
-# ------------------------------------------------------------------------------
+# Creación del usuario del sistema (Acceso FTP, SSH y SFTP) y Directorio Web
+#################################################################################
+
+
 echo "[1/5] Creando usuario del sistema y directorio web..."
 # -m crea el home, -s /bin/bash permite acceso por SSH/SFTP
 useradd -m -s /bin/bash $USUARIO
@@ -223,9 +224,9 @@ EOF
 chown -R $USUARIO:www-data /home/$USUARIO
 chmod -R 755 /home/$USUARIO
 
-# ------------------------------------------------------------------------------
-# B. Base de datos MySQL / MariaDB (ALL PRIVILEGES)
-# ------------------------------------------------------------------------------
+# Base de datos MySQL / MariaDB (ALL PRIVILEGES)
+################################################################################
+
 echo "[2/5] Creando base de datos y usuario SQL..."
 DB_NAME="${USUARIO}_db"
 mysql -u root -e "CREATE DATABASE ${DB_NAME};"
@@ -233,9 +234,9 @@ mysql -u root -e "CREATE USER '${USUARIO}'@'localhost' IDENTIFIED BY '${PASS}';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${USUARIO}'@'localhost';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-# ------------------------------------------------------------------------------
-# C. Virtual Host en Apache (Web normal y Python)
-# ------------------------------------------------------------------------------
+# Virtual Host en Apache (Web normal y Python)
+################################################################################
+
 echo "[3/5] Configurando Virtual Host en Apache..."
 VHOST_FILE="/etc/apache2/sites-available/${DOMINIO}.conf"
 
@@ -279,9 +280,9 @@ chown $USUARIO:www-data $DIR_WEB/app.wsgi
 a2ensite ${DOMINIO}.conf
 systemctl reload apache2
 
-# ------------------------------------------------------------------------------
-# D. DNS (Subdominio y Resolución Inversa)
-# ------------------------------------------------------------------------------
+# DNS (Subdominio y Resolución Inversa)
+################################################################################
+
 echo "[4/5] Configurando registros DNS en Bind9..."
 ZONA_DIRECTA="/etc/bind/db.midominio.local"
 ZONA_INVERSA="/etc/bind/db.193"
@@ -293,6 +294,8 @@ echo "${OCTETO_FINAL}      IN    PTR  ${DOMINIO}." >> $ZONA_INVERSA
 
 systemctl restart bind9
 
+# TODO LISTO
+
 echo "[5/5] ¡Proceso completado con éxito!"
 echo "-----------------------------------------------------"
 echo "Resumen de acceso:"
@@ -300,8 +303,11 @@ echo "- Web (PHP): http://$DOMINIO"
 echo "- Web (Python): http://$DOMINIO/python"
 echo "- Base de datos: $DB_NAME (Usuario: $USUARIO)"
 echo "- FTP/SSH/SFTP: Usuario $USUARIO"
+echo "¡GRACIAS POR CONTRATAR NUESTROS SERVICIOS!"
 echo "-----------------------------------------------------"
 ~~~
 
 <img width="748" height="741" alt="image" src="https://github.com/user-attachments/assets/3b414ea3-25f4-44ca-82f5-9e814e4f0216" />
+
+Le damos permisos de ejecución y ya estaría listo para usar. 
 
