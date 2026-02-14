@@ -1,6 +1,6 @@
 # Práctica 2º Trimestre - Servidor de Alojamiento Web
 
-# 0. Punto de partida.
+# 1. Punto de partida.
 
 En este primer apartado vamos a crear la máquina virtual y darle una IP estática para facilitarnos la vida más adelante. Nos vamos a nuestro Proxmox y creamos una MV con Ubuntu Server 24.04 LTS:
 
@@ -39,7 +39,7 @@ Una vez finalice de instalarse, nos logueamos y vamos a dejar el sistema actuali
 <img width="760" height="221" alt="image" src="https://github.com/user-attachments/assets/93a799e1-450b-474a-8345-1406a340b22c" />
 
 
-# 1. Instalación de la base del servidor.
+# 2. Instalación de la base del servidor.
 
 En este paso vamos a instalar los paquetes necesarios para todo lo que se nos pide en la práctica. 
 Ésta es la lista de los paquetes que vamos a instalar, agrupados por su función, y la explicación de por qué:
@@ -126,7 +126,7 @@ Guardamos los cambios y reiniciamos el servicio. Para comprobar que el certifica
 
 <img width="755" height="147" alt="image" src="https://github.com/user-attachments/assets/0357e092-a58c-4630-a37e-e7ac03a7cb91" />
 
-Ahí vemos que esta conectado (CONNECTED(00000003)) y que tiene los datos de nuestro certificado (subject=C = ES, ST = Andalusia, L = Huelva...).
+Ahí vemos que esta conectado `(CONNECTED(00000003))` y que tiene los datos de nuestro certificado (subject=C = ES, ST = Andalusia, L = Huelva...).
 
 ## 3.2. Preparar las Zonas del DNS (Bind9).
 
@@ -322,7 +322,7 @@ Vale, esto es un error que no indica que hayamos hecho nada mal. Parece que el d
 
 <img width="581" height="61" alt="image" src="https://github.com/user-attachments/assets/395349bd-3933-42cf-917c-f36762c00d50" />
 
-Ahí veo que estaba en lo correcto. Así que vamos a cambiar el netplan para que el servidor DNS sea el propio localhost. Buscamos el archivo con ls /etc/netplan/ y el mío es 50-cloud-init.yaml asi que lo edito con sudo nano /etc/netplan/50-cloud-init.yaml añadiendo a los nameservers mi dirección localhost y dejando como secundaria la de Google:
+Ahí veo que estaba en lo correcto. Así que vamos a cambiar el netplan para que el servidor DNS sea el propio localhost. Buscamos el archivo con `ls /etc/netplan/` y el mío es 50-cloud-init.yaml asi que lo edito con `sudo nano /etc/netplan/50-cloud-init.yaml` añadiendo a los nameservers mi dirección localhost y dejando como secundaria la de Google:
 
 <img width="343" height="295" alt="image" src="https://github.com/user-attachments/assets/e2c72b0b-fb6f-4e2c-9e31-fd325a908f3e" />
 
@@ -374,7 +374,7 @@ Y vamos a crear un index.html para comprobaciones:
 
 <img width="1244" height="116" alt="image" src="https://github.com/user-attachments/assets/b44ce228-8d5e-4842-b4d0-edd6949db919" />
 
-Ahora la parte dificil. Vamos a escribir un archivo compose que es el que nos va a crear la estructura del contenedor y desde el que quedará configurada la red, los volúmenes y los dos contenedores (un DNS basado en Ubuntu/Bind9 y un servidor Web basado en Nginx). Creamos el docker-compose -> nano docker-compose.yml y este sería su contenido:
+Ahora la parte dificil. Vamos a escribir un archivo compose que es el que nos va a crear la estructura del contenedor y desde el que quedará configurada la red, los volúmenes y los dos contenedores (un DNS basado en Ubuntu/Bind9 y un servidor Web basado en Nginx). Creamos el docker-compose -> `nano docker-compose.yml` y este sería su contenido:
 
 ~~~
 services:
@@ -411,7 +411,7 @@ networks:
 
 <img width="722" height="413" alt="image" src="https://github.com/user-attachments/assets/084b8bac-b5d1-40e1-ae6e-056660d606a4" />
 
-Como toda la práctica va de automatización mediante scripts, vamos a crear un pequeño script en Bash que levante el entorno y te muestre su estado. Lo creamos con nano desplegar_docker.sh y su contenido será este código, que despliega el contenedor y te muestra el estado en una tabla cogiendo los parámetros a mostrar:
+Como toda la práctica va de automatización mediante scripts, vamos a crear un pequeño script en Bash que levante el entorno y te muestre su estado. Lo creamos con `nano desplegar_docker.sh` y su contenido será este código, que despliega el contenedor y te muestra el estado en una tabla cogiendo los parámetros a mostrar:
 
 <img width="720" height="415" alt="image" src="https://github.com/user-attachments/assets/f5dc72a8-61e2-480e-9f79-35db0eadfb16" />
 
@@ -424,6 +424,8 @@ Podemos ver cómo va el proceso:
 Y ahora cuando esté completado:
 
 <img width="1283" height="596" alt="image" src="https://github.com/user-attachments/assets/308d0f7e-cefd-4d90-87b0-5fa238c24dbc" />
+
+### Explicación del comando de estado.
 
 * explicacion de `sudo docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"`
 * docker ps es el comando base
