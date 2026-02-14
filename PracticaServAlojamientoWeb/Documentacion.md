@@ -118,7 +118,7 @@ Descomentamos el write_enable para permitir que los usuarios puedan subir sus ar
 
 <img width="558" height="62" alt="image" src="https://github.com/user-attachments/assets/27b160b3-3cf3-4fa4-9fed-4fc0c2bae447" />
 
-Y también borramos al final del todo las líneas relacionadas con el certificado RSA para añadirles las que apuntan a nuestro certificado TSL: 
+Y también borramos al final del todo las líneas relacionadas con el certificado RSA para añadirles las que apuntan a nuestro certificado TLS: 
 
 <img width="495" height="244" alt="image" src="https://github.com/user-attachments/assets/79d65861-53c4-4458-be91-3fc037c940f0" />
 
