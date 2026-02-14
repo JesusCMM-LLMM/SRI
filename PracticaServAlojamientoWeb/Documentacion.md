@@ -1,6 +1,6 @@
 # Práctica 2º Trimestre - Servidor de Alojamiento Web
 
-## 0. Punto de partida.
+# 0. Punto de partida.
 
 En este primer apartado vamos a crear la máquina virtual y darle una IP estática para facilitarnos la vida más adelante. Nos vamos a nuestro Proxmox y creamos una MV con Ubuntu Server 24.04 LTS:
 
@@ -100,10 +100,53 @@ Como una última comprobación de este apartado, vamos a ver los diferentes serv
 - Servidor DNS (Bind9):
   <img width="945" height="339" alt="image" src="https://github.com/user-attachments/assets/7d75770f-9f6b-4c1f-9585-041973e3dccc" />
 
-## 3. 
+# 3. Configuraciones
 
+El objetivo aquí es dejar el terreno preparado para que, cuando ejecutemos el script, este solo tenga que añadir usuarios y no preocuparse de configurar los servicios desde cero. Lo dividiremos en tres pasos clave.
 
+## 3.1. Asegurar el FTP con certificados TLS.
 
+Vamos a hacer que el acceso FTP configure adecuadamente TLS: esto convierte el FTP normal, que es inseguro, en FTPS, cifrando las contraseñas y archivos. Para esto vamos a crear un certificado autofirmado válido por un año, con este comando en el cual ya le pasamos los datos con -subj: `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt -subj "/C=ES/ST=Andalusia/L=Huelva/O=Hosting/CN=192.168.193.110"`
 
+<img width="1895" height="387" alt="image" src="https://github.com/user-attachments/assets/a5d1e914-6ac3-49c4-a17e-04e405d2d525" />
 
+Ahora vamos a configurar vsftpd para que lo use. Nos vamos a su archivo de configuración: 
+
+<img width="731" height="426" alt="image" src="https://github.com/user-attachments/assets/fba2d7dc-8c4d-4b7d-a909-2cc99a5b5df4" />
+
+Descomentamos el write_enable para permitir que los usuarios puedan subir sus archivos mediante FTP:
+
+<img width="558" height="62" alt="image" src="https://github.com/user-attachments/assets/27b160b3-3cf3-4fa4-9fed-4fc0c2bae447" />
+
+Y también borramos al final del todo las líneas relacionadas con el certificado RSA para añadirles las que apuntan a nuestro certificado TSL: 
+
+<img width="495" height="244" alt="image" src="https://github.com/user-attachments/assets/79d65861-53c4-4458-be91-3fc037c940f0" />
+
+Guardamos los cambios y reiniciamos el servicio: 
+
+## 3.2. Preparar las Zonas del DNS (Bind9).
+
+Nuestro script creará los subdominios (ej. cliente1.midominio.local), pero para que pueda hacerlo, primero debe existir el dominio principal. Vamos a llamarlo midominio.local y a declarar las zonas en bind poniéndolas en el archivo de configuración: 
+
+<img width="724" height="416" alt="image" src="https://github.com/user-attachments/assets/2ad163af-8f6c-4cc8-8cff-3995d237c461" />
+
+Ahora vamos a crear el archivo de la zona directa:
+
+<img width="724" height="330" alt="image" src="https://github.com/user-attachments/assets/99321bea-d844-43f8-95dc-ed30bc6d291a" />
+
+Y también el de la zona inversa: 
+
+<img width="737" height="422" alt="image" src="https://github.com/user-attachments/assets/12a190b1-0048-46d5-bae2-ad6333bded2d" />
+
+Reiniciamos Bind9 para que cargue el nuevo dominio:
+
+<img width="727" height="226" alt="image" src="https://github.com/user-attachments/assets/99d2399d-cde3-4c2d-a57a-3b521570dce8" />
+
+## 3.3. Habilitar Python en Apache.
+
+Como ya instalamos el paquete `libapache2-mod-wsgi-py3` en la fase anterior, solo tenemos que decirle a Apache que lo active. Usamos estos dos comandos:
+
+<img width="548" height="83" alt="image" src="https://github.com/user-attachments/assets/1a711d43-7813-4ba6-a58c-7f33acb99047" />
+
+Llegados a este punto, el servidor está 100% preparado. Tiene el motor listo, el FTP seguro, el DNS sabe quién es, y Apache entiende Python.
 
