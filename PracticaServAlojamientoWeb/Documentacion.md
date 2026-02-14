@@ -342,6 +342,8 @@ Y la aplicación de Python:
 
 * Fixed -> el salto de línea en el script original
 
+<img width="718" height="58" alt="image" src="https://github.com/user-attachments/assets/4417585d-efa9-42a8-b448-435a7b526698" />
+
 # 5. Docker.
 
 
