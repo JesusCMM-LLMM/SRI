@@ -34,3 +34,71 @@ Por último, dejamos activo ya el servidor SSH:
 
 <img width="1280" height="343" alt="image" src="https://github.com/user-attachments/assets/6aa0717d-efdb-4113-8c6c-5c2447563f2b" />
 
+Una vez finalice de instalarse, nos logueamos y vamos a dejar el sistema actualizado, para hacer un snapshot del estado actual de la máquina en Proxmox:
+
+<img width="760" height="221" alt="image" src="https://github.com/user-attachments/assets/93a799e1-450b-474a-8345-1406a340b22c" />
+
+
+# 1. Instalación de la base del servidor.
+
+En este paso vamos a instalar los paquetes necesarios para todo lo que se nos pide en la práctica. 
+Ésta es la lista de los paquetes que vamos a instalar, agrupados por su función, y la explicación de por qué:
+
+## Servidor Web y PHP
+- apache2 : Es el servidor web por excelencia, lo hemos usado ya mucho a lo largo del curso. 
+- php y libapache2-mod-php: necesitamos alojar páginas dinámicas con PHP, necesitamos instalar el lenguaje PHP y el módulo que permite a Apache entender e interpretar el código PHP antes de enviarlo al cliente.
+- php-mysql: Permite que las páginas web hechas en PHP (y también el programa phpMyAdmin) puedan hablar y extraer datos de tu base de datos MariaDB/MySQL.
+
+## Base de Datos
+mariadb-server: Es el motor de base de datos relacional, compatible con MySQL.
+
+phpmyadmin: Es una aplicación web (escrita en PHP) con una interfaz gráfica para administrar tus bases de datos MariaDB/MySQL desde el navegador, la hemos usado en IAW.
+
+## Servidor FTP
+vsftpd: Very Secure FTP Daemon. Es el programa que permitirá a tus clientes subir y descargar los archivos de sus páginas web a sus carpetas personales. 
+
+## Servidor DNS
+bind9 (junto con a sus dependencias): Es el software de servidor DNS que hemos usado anteriormente. Lo vamos a necesitar para crear subdominios y configurar la resolución directa e inversa. Bind9 se encargará de traducir nombres como cliente1.midominio.local a nuestra IP 192.168.193.110.
+
+## Soporte para Python en la Web
+python3 y libapache2-mod-wsgi-py3: WSGI (Web Server Gateway Interface) es el estándar que usa Apache para comunicar peticiones web directamente a scripts de Python de forma eficiente y segura.
+
+Lo vamos a instalar todo en un solo comando, que va a quedar algo larguillo:
+~~~
+sudo apt install apache2 php libapache2-mod-php php-mysql mariadb-server phpmyadmin vsftpd bind9 bind9utils dnsutils python3 libapache2-mod-wsgi-py3 -y
+~~~~
+
+<img width="1291" height="131" alt="image" src="https://github.com/user-attachments/assets/e86df4ad-521d-4be2-9e85-c76f1d0bb92a" />
+
+Cuando llegue a la parte de phpmyadmin tendremos que configurarlo correctamente, primero eligiendo apache2:
+
+<img width="1040" height="360" alt="image" src="https://github.com/user-attachments/assets/afd90c04-dc92-41cc-bbb3-f0a6efc5e44a" />
+
+Después nos pedirá configurar la base de datos de phpmyadmin:
+
+<img width="1268" height="314" alt="image" src="https://github.com/user-attachments/assets/8b850bf5-4464-43d5-884e-59b54bcff3a4" />
+
+Necesitaremos proporcionarle una contraseña: 
+
+<img width="1255" height="282" alt="image" src="https://github.com/user-attachments/assets/a59cf03b-a92d-42d3-a059-b805fea9cf58" />
+
+Y ya vemos que se crea correctamente y todos los paquetes se han instalado:
+
+<img width="757" height="255" alt="image" src="https://github.com/user-attachments/assets/40d3f974-f9ac-433d-8304-e032039f940c" />
+
+Como una última comprobación de este apartado, vamos a ver los diferentes servicios y su estado, uno por uno: 
+
+- Apache2:
+  <img width="1288" height="379" alt="image" src="https://github.com/user-attachments/assets/fa98618b-ffed-4855-9bbd-104550344e79" />
+- Base de Datos (MariaDB):
+  <img width="1279" height="401" alt="image" src="https://github.com/user-attachments/assets/8509dbf7-4f0e-4fcc-b60a-759357ed7444" />
+- Servidor FTP (vsftpd):
+  <img width="745" height="220" alt="image" src="https://github.com/user-attachments/assets/7622ab73-3b43-4955-acc3-892d94459945" />
+- Servidor DNS (Bind9):
+  <img width="945" height="339" alt="image" src="https://github.com/user-attachments/assets/7d75770f-9f6b-4c1f-9585-041973e3dccc" />
+
+
+
+
+
+
