@@ -178,13 +178,12 @@ Creamos un archivo para el script (crear_cliente.sh) y este sería el script:
 ~~~
 #!/bin/bash
 
-# ==============================================================================
-# Script de Automatización de Hosting - Práctica 2º Trimestre
-# ==============================================================================
+# Script de automatización de alojamiento
+################################################################################
 
 # 1. Validación de parámetros
 if [ "$#" -ne 2 ]; then
-    echo "Uso incorrecto. Faltan datos."
+    echo "Introduzca los parámetros cliente y contraseña, por ese orden."
     echo "Ejemplo: sudo ./crear_cliente.sh cliente1 password123"
     exit 1
 fi
