@@ -122,7 +122,11 @@ Y también borramos al final del todo las líneas relacionadas con el certificad
 
 <img width="495" height="244" alt="image" src="https://github.com/user-attachments/assets/79d65861-53c4-4458-be91-3fc037c940f0" />
 
-Guardamos los cambios y reiniciamos el servicio: 
+Guardamos los cambios y reiniciamos el servicio. Para comprobar que el certificado esté aplicado correctamente, usamos este comando -> `openssl s_client -connect 127.0.0.1:21 -starttls ftp`:
+
+<img width="755" height="147" alt="image" src="https://github.com/user-attachments/assets/0357e092-a58c-4630-a37e-e7ac03a7cb91" />
+
+Ahí vemos que esta conectado (CONNECTED(00000003)) y que tiene los datos de nuestro certificado (subject=C = ES, ST = Andalusia, L = Huelva...).
 
 ## 3.2. Preparar las Zonas del DNS (Bind9).
 
@@ -134,13 +138,25 @@ Ahora vamos a crear el archivo de la zona directa:
 
 <img width="724" height="330" alt="image" src="https://github.com/user-attachments/assets/99321bea-d844-43f8-95dc-ed30bc6d291a" />
 
+Y lo comprobamos: 
+
+<img width="865" height="51" alt="image" src="https://github.com/user-attachments/assets/b4a81af3-bf41-4033-a1f8-2694240e29eb" />
+
 Y también el de la zona inversa: 
 
 <img width="737" height="422" alt="image" src="https://github.com/user-attachments/assets/12a190b1-0048-46d5-bae2-ad6333bded2d" />
 
+Con su correspondiente comprobación: 
+
+<img width="830" height="56" alt="image" src="https://github.com/user-attachments/assets/b35c92f5-d4ae-4bac-87cb-00a4a1f449a8" />
+
 Reiniciamos Bind9 para que cargue el nuevo dominio:
 
 <img width="727" height="226" alt="image" src="https://github.com/user-attachments/assets/99d2399d-cde3-4c2d-a57a-3b521570dce8" />
+
+Y lo comprobamos con dig:
+
+<img width="628" height="58" alt="image" src="https://github.com/user-attachments/assets/0c6cf748-8028-45cd-9e1a-9722c4492d3d" />
 
 ## 3.3. Habilitar Python en Apache.
 
@@ -148,5 +164,145 @@ Como ya instalamos el paquete `libapache2-mod-wsgi-py3` en la fase anterior, sol
 
 <img width="548" height="83" alt="image" src="https://github.com/user-attachments/assets/1a711d43-7813-4ba6-a58c-7f33acb99047" />
 
+Comprobación:
+
+<img width="1645" height="135" alt="image" src="https://github.com/user-attachments/assets/c9e3b117-99d4-42b8-a105-3956accff8cf" />
+
 Llegados a este punto, el servidor está 100% preparado. Tiene el motor listo, el FTP seguro, el DNS sabe quién es, y Apache entiende Python.
+
+
+#4. El Script de Automatización.
+
+Creamos un archivo para el script (crear_cliente.sh) y este sería el script:
+
+~~~
+#!/bin/bash
+
+# ==============================================================================
+# Script de Automatización de Hosting - Práctica 2º Trimestre
+# ==============================================================================
+
+# 1. Validación de parámetros
+if [ "$#" -ne 2 ]; then
+    echo "Uso incorrecto. Faltan datos."
+    echo "Ejemplo: sudo ./crear_cliente.sh cliente1 password123"
+    exit 1
+fi
+
+USUARIO=$1
+PASS=$2
+DOMINIO="${USUARIO}.midominio.local"
+IP_SERVIDOR="192.168.193.110"
+OCTETO_FINAL="110" 
+
+echo "--- Iniciando despliegue para el usuario: $USUARIO ---"
+
+# ------------------------------------------------------------------------------
+# A. Creación del usuario del sistema (Acceso FTP, SSH y SFTP) y Directorio Web
+# ------------------------------------------------------------------------------
+echo "[1/5] Creando usuario del sistema y directorio web..."
+# -m crea el home, -s /bin/bash permite acceso por SSH/SFTP
+useradd -m -s /bin/bash $USUARIO
+echo "$USUARIO:$PASS" | chpasswd
+
+DIR_WEB="/home/$USUARIO/public_html"
+mkdir -p $DIR_WEB
+
+# Página web dinámica por defecto (PHP)
+cat <<EOF > $DIR_WEB/index.php
+<!DOCTYPE html>
+<html>
+<head><title>Bienvenido $USUARIO</title></head>
+<body>
+    <h1>Hosting configurado correctamente para $DOMINIO</h1>
+    <?php echo "<p>Soporte PHP activado. ¡Hola mundo!</p>"; ?>
+</body>
+</html>
+EOF
+
+# Permisos para que Apache pueda leer, pero el dueño sea el usuario
+chown -R $USUARIO:www-data /home/$USUARIO
+chmod -R 755 /home/$USUARIO
+
+# ------------------------------------------------------------------------------
+# B. Base de datos MySQL / MariaDB (ALL PRIVILEGES)
+# ------------------------------------------------------------------------------
+echo "[2/5] Creando base de datos y usuario SQL..."
+DB_NAME="${USUARIO}_db"
+mysql -u root -e "CREATE DATABASE ${DB_NAME};"
+mysql -u root -e "CREATE USER '${USUARIO}'@'localhost' IDENTIFIED BY '${PASS}';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${USUARIO}'@'localhost';"
+mysql -u root -e "FLUSH PRIVILEGES;"
+
+# ------------------------------------------------------------------------------
+# C. Virtual Host en Apache (Web normal y Python)
+# ------------------------------------------------------------------------------
+echo "[3/5] Configurando Virtual Host en Apache..."
+VHOST_FILE="/etc/apache2/sites-available/${DOMINIO}.conf"
+
+cat <<EOF > $VHOST_FILE
+<VirtualHost *:80>
+    ServerName $DOMINIO
+    DocumentRoot $DIR_WEB
+
+    <Directory $DIR_WEB>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Configuración para ejecutar Python (WSGI)
+    WSGIScriptAlias /python $DIR_WEB/app.wsgi
+    <Directory $DIR_WEB>
+        <Files app.wsgi>
+            Require all granted
+        </Files>
+    </Directory>
+
+    ErrorLog \${APACHE_LOG_DIR}/${USUARIO}_error.log
+    CustomLog \${APACHE_LOG_DIR}/${USUARIO}_access.log combined
+</VirtualHost>
+EOF
+
+# App Python de prueba
+cat <<EOF > $DIR_WEB/app.wsgi
+def application(environ, start_response):
+    status = '200 OK'
+    output = b'Hola! La aplicacion Python funciona en tu hosting.'
+    response_headers = [('Content-type', 'text/plain'),
+                        ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
+    return [output]
+EOF
+chown $USUARIO:www-data $DIR_WEB/app.wsgi
+
+# Activamos el sitio en Apache
+a2ensite ${DOMINIO}.conf
+systemctl reload apache2
+
+# ------------------------------------------------------------------------------
+# D. DNS (Subdominio y Resolución Inversa)
+# ------------------------------------------------------------------------------
+echo "[4/5] Configurando registros DNS en Bind9..."
+ZONA_DIRECTA="/etc/bind/db.midominio.local"
+ZONA_INVERSA="/etc/bind/db.193"
+
+# Añadir a zona directa
+echo "${USUARIO}    IN    A    ${IP_SERVIDOR}" >> $ZONA_DIRECTA
+# Añadir a zona inversa
+echo "${OCTETO_FINAL}      IN    PTR  ${DOMINIO}." >> $ZONA_INVERSA
+
+systemctl restart bind9
+
+echo "[5/5] ¡Proceso completado con éxito!"
+echo "-----------------------------------------------------"
+echo "Resumen de acceso:"
+echo "- Web (PHP): http://$DOMINIO"
+echo "- Web (Python): http://$DOMINIO/python"
+echo "- Base de datos: $DB_NAME (Usuario: $USUARIO)"
+echo "- FTP/SSH/SFTP: Usuario $USUARIO"
+echo "-----------------------------------------------------"
+~~~
+
+<img width="748" height="741" alt="image" src="https://github.com/user-attachments/assets/3b414ea3-25f4-44ca-82f5-9e814e4f0216" />
 
