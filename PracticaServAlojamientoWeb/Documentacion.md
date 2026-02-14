@@ -358,8 +358,75 @@ Y vamos a ver los recursos desde un navegador:
 # 5. Docker.
 Nuestro servidor actual ya tiene ocupados los puertos 80 (Apache) y 53 (Bind9). Si intentamos levantar contenedores Docker en esos mismos puertos, chocarán y darán error.
 Para no romper lo que ya hemos hecho, configuraremos los contenedores para que escuchen en puertos alternativos (ej. 8080 para la web y 5353 para el DNS) usando una red interna de Docker.
+Vamos a instalar Docker y el plugin de Compose:
 
+<img width="611" height="78" alt="image" src="https://github.com/user-attachments/assets/f9ab5bc7-0fcd-43e5-a813-c3c6b59f6e9d" />
 
+Añadimos tu usuario al grupo de Docker para no tener que escribir sudo todo el tiempo con los contenedores:
 
+<img width="514" height="38" alt="image" src="https://github.com/user-attachments/assets/cad54fa5-e6a9-4543-8802-153259c7f314" />
 
+Como nos dices en el enunciado que hay que configurar "volúmenes", vamos a crear una carpeta para este proyecto y subcarpetas para guardar los datos de los contenedores de forma persistente. Vamos a la carpeta personal:
 
+<img width="482" height="91" alt="image" src="https://github.com/user-attachments/assets/61146688-c5e0-46f9-9447-34d960891bb6" />
+
+Y vamos a crear un index.html para comprobaciones: 
+
+<img width="1244" height="116" alt="image" src="https://github.com/user-attachments/assets/b44ce228-8d5e-4842-b4d0-edd6949db919" />
+
+Ahora la parte dificil. Vamos a escribir un archivo compose que es el que nos va a crear la estructura del contenedor y desde el que quedará configurada la red, los volúmenes y los dos contenedores (un DNS basado en Ubuntu/Bind9 y un servidor Web basado en Nginx). Creamos el docker-compose -> nano docker-compose.yml y este sería su contenido:
+
+~~~
+services:
+  # 1. Contenedor DNS
+  servidor_dns:
+    image: ubuntu/bind9:latest
+    container_name: dns_docker
+    ports:
+      - "5353:53/udp"
+      - "5353:53/tcp"
+    volumes:
+      - ./dns:/etc/bind
+    networks:
+      - red_practica
+    restart: unless-stopped
+
+  # 2. Contenedor Web
+  servidor_web:
+    image: nginx:latest
+    container_name: web_docker
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    networks:
+      - red_practica
+    restart: unless-stopped
+
+# Configuración de la red virtual de Docker
+networks:
+  red_practica:
+    driver: bridge
+~~~
+
+<img width="722" height="413" alt="image" src="https://github.com/user-attachments/assets/084b8bac-b5d1-40e1-ae6e-056660d606a4" />
+
+Como toda la práctica va de automatización mediante scripts, vamos a crear un pequeño script en Bash que levante el entorno y te muestre su estado. Lo creamos con nano desplegar_docker.sh y su contenido será este código, que despliega el contenedor y te muestra el estado en una tabla cogiendo los parámetros a mostrar:
+
+<img width="720" height="415" alt="image" src="https://github.com/user-attachments/assets/f5dc72a8-61e2-480e-9f79-35db0eadfb16" />
+
+Le damos permisos de ejecución y lo probamos:
+
+Podemos ver cómo va el proceso:
+
+<img width="761" height="357" alt="image" src="https://github.com/user-attachments/assets/5493690d-ff6b-4c0a-b1ea-64e8e394df49" />
+
+Y ahora cuando esté completado:
+
+<img width="1283" height="596" alt="image" src="https://github.com/user-attachments/assets/308d0f7e-cefd-4d90-87b0-5fa238c24dbc" />
+
+* explicacion de `sudo docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"`
+* docker ps es el comando base
+* --format table -> en lugar de una fila larguisima, formateamos la salida en formato tabla
+* {{.Names}}, {{.Image}}, {{.Status}}, {{.Ports}}: Son las variables (escritas en un formato llamado plantillas de Go) que extraen la información exacta que queremos ver.
+* 
