@@ -355,8 +355,10 @@ Y vamos a ver los recursos desde un navegador:
 <img width="730" height="105" alt="image" src="https://github.com/user-attachments/assets/9efc8be0-da32-4981-9cf0-91a48fd3949d" />
 
 
-
 # 5. Docker.
+Nuestro servidor actual ya tiene ocupados los puertos 80 (Apache) y 53 (Bind9). Si intentamos levantar contenedores Docker en esos mismos puertos, chocarán y darán error.
+Para no romper lo que ya hemos hecho, configuraremos los contenedores para que escuchen en puertos alternativos (ej. 8080 para la web y 5353 para el DNS) usando una red interna de Docker.
+
 
 
 
