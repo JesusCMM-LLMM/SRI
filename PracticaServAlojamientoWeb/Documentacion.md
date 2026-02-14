@@ -95,7 +95,7 @@ Como una última comprobación de este apartado, vamos a ver los diferentes serv
   <img width="1279" height="401" alt="image" src="https://github.com/user-attachments/assets/8509dbf7-4f0e-4fcc-b60a-759357ed7444" />
 
 - Servidor FTP (vsftpd):
-  <img width="745" height="220" alt="image" src="https://github.com/user-attachments/assets/7622ab73-3b43-4955-acc3-892d94459945" />
+  <img width="1200" height="400" alt="image" src="https://github.com/user-attachments/assets/7622ab73-3b43-4955-acc3-892d94459945" />
 
 - Servidor DNS (Bind9):
   <img width="945" height="339" alt="image" src="https://github.com/user-attachments/assets/7d75770f-9f6b-4c1f-9585-041973e3dccc" />
