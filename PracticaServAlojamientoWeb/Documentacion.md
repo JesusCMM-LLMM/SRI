@@ -308,5 +308,23 @@ echo "-----------------------------------------------------"
 
 <img width="748" height="741" alt="image" src="https://github.com/user-attachments/assets/3b414ea3-25f4-44ca-82f5-9e814e4f0216" />
 
-Le damos permisos de ejecución y ya estaría listo para usar. 
+Le damos permisos de ejecución y ya estaría listo para usar. Como prueba, vamos a crear al usuario Pepe con contraseña 6767:
+
+<img width="507" height="312" alt="image" src="https://github.com/user-attachments/assets/274e6271-459a-4f95-9a8c-0a3a1b5393fe" />
+
+## 4.1 Comprobaciones usando curl:
+
+Primero probamos que el DNS resuelve el subdominio del cliente:
+
+<img width="544" height="385" alt="image" src="https://github.com/user-attachments/assets/9dd38f57-e101-47be-93bc-3962b9d3c980" />
+
+Vale, esto es un error que no indica que hayamos hecho nada mal. Parece que el despliegue está correcto, pero como antes configuramos el DNS con 8.8.8.8 pues estamos preguntando a Google (8.8.8.8) y ninguno de esos servidores externos sabe qué es midominio.local. Creo que todo lo que necesitamos lo tenemos en el propio bind9. Podemos comprobar que esto es así si a usamos dig preguntandole directamente al localhost:
+
+<img width="581" height="61" alt="image" src="https://github.com/user-attachments/assets/395349bd-3933-42cf-917c-f36762c00d50" />
+
+Ahí veo que estaba en lo correcto. Así que vamos a cambiar el netplan para que el servidos DNS sea el propio localhost:
+
+
+
+
 
